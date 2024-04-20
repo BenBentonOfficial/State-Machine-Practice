@@ -9,9 +9,10 @@ public class PlayerStateMachine : StateManager<PlayerStateMachine.EPlayerState>
 
     private void Awake()
     {
-        States.Add(EPlayerState.Idle, new PlayerMoveState(EPlayerState.Idle));
+        States.Add(EPlayerState.Idle, new PlayerIdleState(EPlayerState.Idle));
         States.Add(EPlayerState.Move, new PlayerMoveState(EPlayerState.Move));
-        States.Add(EPlayerState.Action, new PlayerMoveState(EPlayerState.Action));
-        
+        States.Add(EPlayerState.Action, new PlayerActionState(EPlayerState.Action));
+
+        CurrentState = States[EPlayerState.Idle];
     }
 }

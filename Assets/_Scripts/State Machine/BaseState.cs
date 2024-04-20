@@ -13,5 +13,5 @@ public abstract class BaseState<EState> where EState : Enum
     public abstract void EnterState();
     public abstract void ExitState();
     public abstract void UpdateState();
-    public abstract EState GetNextState(); // EState is a generic type
+    public abstract EState GetNextState(); // EState is a generic type // logic for checking next state. Also runs every frame, but after update. 
 }

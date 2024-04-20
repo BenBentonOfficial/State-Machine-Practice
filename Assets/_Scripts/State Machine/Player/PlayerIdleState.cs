@@ -6,21 +6,25 @@ public class PlayerIdleState : BaseState<PlayerStateMachine.EPlayerState>
 
     public override void EnterState()
     {
-        throw new System.NotImplementedException();
+        PlayerComponents.Animator().SetBool(StateKey.ToString(), true);
     }
 
     public override void ExitState()
     {
-        throw new System.NotImplementedException();
+        PlayerComponents.Animator().SetBool(StateKey.ToString(), false);
     }
 
     public override void UpdateState()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     public override PlayerStateMachine.EPlayerState GetNextState()
     {
-        throw new System.NotImplementedException();
+        if (InputManager.MovementInput().magnitude > 0)
+        {
+            return PlayerStateMachine.EPlayerState.Move;
+        }
+        return StateKey;
     }
 }
