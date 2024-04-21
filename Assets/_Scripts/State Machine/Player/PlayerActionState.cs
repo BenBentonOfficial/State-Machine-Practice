@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class PlayerActionState : BaseState<PlayerStateMachine.EPlayerState>
 {
+    private bool actionAnimEnded;
     public PlayerActionState(PlayerStateMachine.EPlayerState key) : base(key)
     {
     }
 
     public override void EnterState()
     {
-        throw new System.NotImplementedException();
+        actionAnimEnded = false;
     }
 
     public override void ExitState()
@@ -23,6 +24,18 @@ public class PlayerActionState : BaseState<PlayerStateMachine.EPlayerState>
 
     public override PlayerStateMachine.EPlayerState GetNextState()
     {
-        throw new System.NotImplementedException();
+        if (actionAnimEnded)
+        {
+            return PlayerStateMachine.EPlayerState.Idle;
+        }
+        else
+        {
+            return StateKey;
+        }
+    }
+
+    public override void AnimationFinishTrigger()
+    {
+        actionAnimEnded = true;
     }
 }

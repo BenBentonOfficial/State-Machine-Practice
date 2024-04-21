@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class PlayerMoveState : BaseState<PlayerStateMachine.EPlayerState>
 {
 
@@ -10,7 +8,6 @@ public class PlayerMoveState : BaseState<PlayerStateMachine.EPlayerState>
     public override void EnterState()
     {
         PlayerComponents.Animator().SetBool(StateKey.ToString(), true);
-        Debug.Log(StateKey.ToString());
     }
 
     public override void ExitState()
@@ -32,5 +29,9 @@ public class PlayerMoveState : BaseState<PlayerStateMachine.EPlayerState>
         }
         return StateKey;
     }
-    
+
+    public override void AnimationFinishTrigger()
+    {
+        throw new System.NotImplementedException();
+    }
 }

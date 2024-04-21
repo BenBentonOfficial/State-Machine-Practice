@@ -27,4 +27,9 @@ public class PlayerIdleState : BaseState<PlayerStateMachine.EPlayerState>
         }
         return StateKey;
     }
+
+    public override void AnimationFinishTrigger()
+    {
+        throw new System.NotImplementedException();
+    }
 }

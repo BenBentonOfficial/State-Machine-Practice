@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerComponents : MonoBehaviour
@@ -7,6 +6,7 @@ public class PlayerComponents : MonoBehaviour
 
     private static Rigidbody2D rigidbody;
     private static Animator animator;
+    private static PlayerStateMachine _stateMachine;
 
     private int facingDir = 1;
     
@@ -22,11 +22,14 @@ public class PlayerComponents : MonoBehaviour
         
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        _stateMachine = GetComponent<PlayerStateMachine>();
     }
 
     public static Rigidbody2D Rigidbody() => rigidbody;
 
     public static Animator Animator() => animator;
+
+    public static PlayerStateMachine StateMachine() => _stateMachine;
 
     public static void ZeroVelocity() => rigidbody.velocity = Vector2.zero;
 

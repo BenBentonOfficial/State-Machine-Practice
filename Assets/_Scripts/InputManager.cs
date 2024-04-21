@@ -7,6 +7,8 @@ public class InputManager : MonoBehaviour
 
     [Header("Input Actions")] 
     [SerializeField] private InputActionReference movement;
+
+    [SerializeField] private InputActionReference attack;
     
     private void Awake()
     {
@@ -17,11 +19,15 @@ public class InputManager : MonoBehaviour
         }
 
         instance = this;
+        attack.action.performed += context => Attack(context);
     }
 
     public static Vector2 MovementInput()
     {
         return instance.movement.action.ReadValue<Vector2>();
     }
-    
+
+    private void Attack(InputAction.CallbackContext context)
+    {
+    }
 }
