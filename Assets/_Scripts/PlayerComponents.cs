@@ -37,6 +37,8 @@ public class PlayerComponents : MonoBehaviour
         InputManager.instance.jumpAction += QueueJumpInput;
     }
 
+    public int FacingDirection() => facingDir;
+
     public static bool AttackQueued() => attackQueued;
     public static bool JumpQueued() => jumpQueued;
 
@@ -59,7 +61,7 @@ public class PlayerComponents : MonoBehaviour
 
     public static void ZeroVelocity() => rb.velocity = Vector2.zero;
 
-    public static void SetVelocity(Vector2 newVelocity) => rb.velocity = newVelocity;
+    public static void SetVelocity(Vector2 newVelocity) => rb.velocity = new Vector2(newVelocity.x * instance.facingDir, newVelocity.y);
 
     public static void SetVelocityX(float newXVelocity) => rb.velocity = new Vector2(newXVelocity, rb.velocityY);
     public static void SetVelocityY(float newYVelocity) => rb.velocity = new Vector2(rb.velocityX, newYVelocity);
