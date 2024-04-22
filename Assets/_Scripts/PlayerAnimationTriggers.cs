@@ -6,6 +6,6 @@ public class PlayerAnimationTriggers : MonoBehaviour
 
     private void AnimationTrigger()
     {
-        PlayerComponents.StateMachine().
+        PlayerComponents.StateMachine().GetCurrentState().AnimationFinishTrigger();
     }
 }

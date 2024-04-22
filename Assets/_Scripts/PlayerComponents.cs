@@ -4,11 +4,15 @@ public class PlayerComponents : MonoBehaviour
 {
     public static PlayerComponents instance;
 
-    private static Rigidbody2D rigidbody;
+    private static Rigidbody2D rb;
     private static Animator animator;
     private static PlayerStateMachine _stateMachine;
 
     private int facingDir = 1;
+
+    private static bool attackQueued;
+
+    [SerializeField] private PlayerAttackSO[] playerAttacks;
     
     private void Awake()
     {
@@ -20,18 +24,33 @@ public class PlayerComponents : MonoBehaviour
 
         instance = this;
         
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         _stateMachine = GetComponent<PlayerStateMachine>();
+
+        InputManager.instance.attackAction += QueueAttackInput;
     }
 
-    public static Rigidbody2D Rigidbody() => rigidbody;
+    public static bool AttackQueued() => attackQueued;
+
+    private void QueueAttackInput() => attackQueued = true;
+
+    public static void ConsumeAttackInput() => attackQueued = false;
+
+    public static Rigidbody2D Rigidbody() => rb;
 
     public static Animator Animator() => animator;
 
     public static PlayerStateMachine StateMachine() => _stateMachine;
 
-    public static void ZeroVelocity() => rigidbody.velocity = Vector2.zero;
+    public PlayerAttackSO[] PlayerAttacks()
+    {
+        return instance.playerAttacks;
+    }
+
+    public static void ZeroVelocity() => rb.velocity = Vector2.zero;
+
+    public static void SetVelocity(Vector2 newVelocity) => rb.velocity = newVelocity;
 
     private void Update()
     {

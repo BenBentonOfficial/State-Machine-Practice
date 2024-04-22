@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,8 @@ public class InputManager : MonoBehaviour
     [SerializeField] private InputActionReference movement;
 
     [SerializeField] private InputActionReference attack;
+
+    public Action attackAction;
     
     private void Awake()
     {
@@ -29,5 +32,6 @@ public class InputManager : MonoBehaviour
 
     private void Attack(InputAction.CallbackContext context)
     {
+        attackAction?.Invoke();
     }
 }

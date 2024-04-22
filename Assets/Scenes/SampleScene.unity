@@ -754,6 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09e250fa97054ef4d8ecac31b8bc3ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAttacks: []
 --- !u!1 &1873443475
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,6 +927,7 @@ GameObject:
   - component: {fileID: 1948148462}
   - component: {fileID: 1948148463}
   - component: {fileID: 1948148464}
+  - component: {fileID: 1948148465}
   m_Layer: 0
   m_Name: Avatar
   m_TagString: Untagged
@@ -1024,6 +1026,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1948148465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948148461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cd6bc0a10c2d3e4ab1f4ea9a49306b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
