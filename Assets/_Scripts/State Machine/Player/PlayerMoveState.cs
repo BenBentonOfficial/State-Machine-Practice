@@ -27,6 +27,17 @@ public class PlayerMoveState : BaseState<PlayerStateMachine.EPlayerState>
         {
             return PlayerStateMachine.EPlayerState.Idle;
         }
+        
+        if (PlayerComponents.AttackQueued())
+        {
+            return PlayerStateMachine.EPlayerState.Attack;
+        }
+
+        if (PlayerComponents.JumpQueued())
+        {
+            return PlayerStateMachine.EPlayerState.Jump;
+        }
+        
         return StateKey;
     }
 

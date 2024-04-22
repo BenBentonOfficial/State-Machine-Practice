@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerComponents : MonoBehaviour
@@ -11,8 +12,12 @@ public class PlayerComponents : MonoBehaviour
     private int facingDir = 1;
 
     private static bool attackQueued;
+    private static bool jumpQueued;
 
     [SerializeField] private PlayerAttackSO[] playerAttacks;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float groundCheckDistance;
+    [SerializeField] private LayerMask groundLayer;
     
     private void Awake()
     {
@@ -29,9 +34,14 @@ public class PlayerComponents : MonoBehaviour
         _stateMachine = GetComponent<PlayerStateMachine>();
 
         InputManager.instance.attackAction += QueueAttackInput;
+        InputManager.instance.jumpAction += QueueJumpInput;
     }
 
     public static bool AttackQueued() => attackQueued;
+    public static bool JumpQueued() => jumpQueued;
+
+    private void QueueJumpInput() => jumpQueued = true;
+    public static void ConsumeJumpInput() => jumpQueued = false;
 
     private void QueueAttackInput() => attackQueued = true;
 
@@ -43,15 +53,16 @@ public class PlayerComponents : MonoBehaviour
 
     public static PlayerStateMachine StateMachine() => _stateMachine;
 
-    public PlayerAttackSO[] PlayerAttacks()
-    {
-        return instance.playerAttacks;
-    }
+    public PlayerAttackSO[] PlayerAttacks() => playerAttacks;
+
+    public float JumpForce() => jumpForce;
 
     public static void ZeroVelocity() => rb.velocity = Vector2.zero;
 
     public static void SetVelocity(Vector2 newVelocity) => rb.velocity = newVelocity;
 
+    public static void SetVelocityX(float newXVelocity) => rb.velocity = new Vector2(newXVelocity, rb.velocityY);
+    public static void SetVelocityY(float newYVelocity) => rb.velocity = new Vector2(rb.velocityX, newYVelocity);
     private void Update()
     {
         CheckFlip();
@@ -75,5 +86,13 @@ public class PlayerComponents : MonoBehaviour
         Vector3 newDir = new Vector3(transform.rotation.x, newRot, transform.rotation.z);
         transform.rotation = Quaternion.Euler(newDir);
         facingDir *= -1;
+    }
+
+    public static bool TouchingGround() =>
+        Physics2D.Raycast(instance.transform.position, Vector2.down, instance.groundCheckDistance, instance.groundLayer);
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - groundCheckDistance, 0));
     }
 }

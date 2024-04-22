@@ -30,6 +30,11 @@ public class PlayerIdleState : BaseState<PlayerStateMachine.EPlayerState>
         {
             return PlayerStateMachine.EPlayerState.Attack;
         }
+
+        if (PlayerComponents.JumpQueued())
+        {
+            return PlayerStateMachine.EPlayerState.Jump;
+        }
         
         if (InputManager.MovementInput().magnitude > 0)
         {

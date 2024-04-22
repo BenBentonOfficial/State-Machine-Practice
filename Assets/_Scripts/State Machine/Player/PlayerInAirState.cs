@@ -1,18 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInAirState : MonoBehaviour
+public class PlayerInAirState : BaseState<PlayerStateMachine.EPlayerState>
 {
-    // Start is called before the first frame update
-    void Start()
+    public PlayerInAirState(PlayerStateMachine.EPlayerState key) : base(key)
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void EnterState()
     {
+        Debug.Log("in air");
+    }
+
+    public override void ExitState()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void UpdateState()
+    {
+        if(!InputManager.MovementInput().x.Equals(0))
+            PlayerComponents.SetVelocityX(2f * InputManager.MovementInput().x);
+    }
+
+    public override PlayerStateMachine.EPlayerState GetNextState()
+    {
+        if (PlayerComponents.TouchingGround())
+            return PlayerStateMachine.EPlayerState.Idle;
         
+        return StateKey;
+    }
+
+    public override void AnimationFinishTrigger()
+    {
+        throw new System.NotImplementedException();
     }
 }

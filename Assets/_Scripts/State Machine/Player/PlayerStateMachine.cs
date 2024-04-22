@@ -6,7 +6,8 @@ public class PlayerStateMachine : StateManager<PlayerStateMachine.EPlayerState>
         Move,
         Action,
         Attack,
-        InAir
+        InAir,
+        Jump
     }
 
     private void Awake()
@@ -15,6 +16,8 @@ public class PlayerStateMachine : StateManager<PlayerStateMachine.EPlayerState>
         States.Add(EPlayerState.Move, new PlayerMoveState(EPlayerState.Move));
         States.Add(EPlayerState.Action, new PlayerActionState(EPlayerState.Action));
         States.Add(EPlayerState.Attack, new PlayerAttackState(EPlayerState.Attack));
+        States.Add(EPlayerState.Jump, new PlayerJumpState(EPlayerState.Jump));
+        States.Add(EPlayerState.InAir, new PlayerInAirState(EPlayerState.InAir));
 
         CurrentState = States[EPlayerState.Idle];
     }
