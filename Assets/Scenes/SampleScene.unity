@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: -36885607608555113, guid: e62aefba585aa4b4cb921a7ea5ea269a, type: 3}
   attack: {fileID: 4270186023346336961, guid: e62aefba585aa4b4cb921a7ea5ea269a, type: 3}
-  jump: {fileID: 0}
+  jump: {fileID: -7212197542173640402, guid: e62aefba585aa4b4cb921a7ea5ea269a, type: 3}
 --- !u!4 &348282600
 Transform:
   m_ObjectHideFlags: 0
@@ -759,11 +759,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7d64f9c14067c6c4694ed6238c00001a, type: 2}
   - {fileID: 11400000, guid: 9bed40382dcd37d41bbd0c52fb8f820f, type: 2}
   - {fileID: 11400000, guid: ed746655ed7254c4eb274e6c1eab7b41, type: 2}
-  jumpForce: 0
-  groundCheckDistance: 0
+  jumpForce: 10
+  groundCheckDistance: 0.34
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!1 &1873443475
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,7 +776,7 @@ GameObject:
   - component: {fileID: 1873443478}
   - component: {fileID: 1873443477}
   - component: {fileID: 1873443476}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Static Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
