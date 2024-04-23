@@ -44,4 +44,5 @@ public class InputManager : MonoBehaviour
         Debug.Log("Trying to jump");
         jumpAction?.Invoke();
     }
+    
 }

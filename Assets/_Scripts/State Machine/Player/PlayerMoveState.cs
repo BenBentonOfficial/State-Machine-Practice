@@ -18,7 +18,7 @@ public class PlayerMoveState : BaseState<PlayerStateMachine.EPlayerState>
 
     public override void UpdateState()
     {
-        PlayerComponents.Rigidbody().velocity = InputManager.MovementInput();
+        PlayerComponents.SetVelocityX(InputManager.MovementInput().x * 3f);
     }
 
     public override PlayerStateMachine.EPlayerState GetNextState()

@@ -9,11 +9,14 @@ public class PlayerInAirState : BaseState<PlayerStateMachine.EPlayerState>
     public override void EnterState()
     {
         Debug.Log("in air");
+        PlayerComponents.Animator().SetBool("Jump", true);
+        PlayerComponents.Rigidbody().gravityScale = 1.5f;
     }
 
     public override void ExitState()
     {
-        throw new System.NotImplementedException();
+        PlayerComponents.Animator().SetBool("Jump", false);
+        PlayerComponents.Rigidbody().gravityScale = 4f;
     }
 
     public override void UpdateState()

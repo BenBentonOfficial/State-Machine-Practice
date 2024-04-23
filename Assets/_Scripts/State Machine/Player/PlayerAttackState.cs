@@ -33,6 +33,7 @@ public class PlayerAttackState : BaseState<PlayerStateMachine.EPlayerState>
 
     public override void ExitState()
     {
+        //Debug.Log(PlayerComponents.AttackQueued());
         comboCount++;
         lastTimeAttacked = Time.time;
         PlayerComponents.Animator().SetBool(StateKey.ToString(), false);

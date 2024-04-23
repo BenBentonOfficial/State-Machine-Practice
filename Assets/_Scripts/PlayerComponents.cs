@@ -13,6 +13,8 @@ public class PlayerComponents : MonoBehaviour
 
     private static bool attackQueued;
     private static bool jumpQueued;
+    private float inputConsumeTimer;
+    public bool touchingGround;
 
     [SerializeField] private PlayerAttackSO[] playerAttacks;
     [SerializeField] private float jumpForce;
@@ -36,16 +38,26 @@ public class PlayerComponents : MonoBehaviour
         InputManager.instance.attackAction += QueueAttackInput;
         InputManager.instance.jumpAction += QueueJumpInput;
     }
+    
+    
 
     public int FacingDirection() => facingDir;
 
     public static bool AttackQueued() => attackQueued;
     public static bool JumpQueued() => jumpQueued;
 
-    private void QueueJumpInput() => jumpQueued = true;
+    private void QueueJumpInput()
+    {
+        instance.inputConsumeTimer = 0.2f;
+        jumpQueued = true; 
+    }
     public static void ConsumeJumpInput() => jumpQueued = false;
 
-    private void QueueAttackInput() => attackQueued = true;
+    private void QueueAttackInput()
+    {
+        instance.inputConsumeTimer = 0.35f;
+        attackQueued = true;
+    }
 
     public static void ConsumeAttackInput() => attackQueued = false;
 
@@ -67,7 +79,17 @@ public class PlayerComponents : MonoBehaviour
     public static void SetVelocityY(float newYVelocity) => rb.velocity = new Vector2(rb.velocityX, newYVelocity);
     private void Update()
     {
+        inputConsumeTimer -= Time.deltaTime;
+        Debug.Log(inputConsumeTimer <= 0);
+        if (inputConsumeTimer <= 0)
+        {
+            Debug.Log("Consume");
+            ConsumeAttackInput();
+            ConsumeJumpInput();
+        }
         CheckFlip();
+        touchingGround = TouchingGround();
+        Animator().SetFloat("yVelocity", rb.velocityY);
     }
 
     // possibly move to individual states

@@ -10,11 +10,12 @@ public class PlayerJumpState : BaseState<PlayerStateMachine.EPlayerState>
     {
         PlayerComponents.ConsumeJumpInput();
         PlayerComponents.SetVelocityY(PlayerComponents.instance.JumpForce());
+        PlayerComponents.Animator().SetBool(StateKey.ToString(), true);
     }
 
     public override void ExitState()
     {
-        throw new System.NotImplementedException();
+        PlayerComponents.Animator().SetBool(StateKey.ToString(), false);
     }
 
     public override void UpdateState()
