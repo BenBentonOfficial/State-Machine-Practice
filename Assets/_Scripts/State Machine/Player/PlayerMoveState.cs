@@ -15,13 +15,13 @@ public class PlayerMoveState : PlayerState
     public override void ExitState()
     {
         base.ExitState();
-        Master.ZeroVelocity();
+        player.ZeroVelocity();
     }
 
     public override void UpdateState()
     {
-        Master.SetVelocityX(InputManager.MovementInput().x * 3f);
-        Master.CheckFlip();
+        player.SetVelocityX(InputManager.MovementInput().x * 3f);
+        player.CheckFlip();
     }
 
     public override PlayerStateMachine.EPlayerState GetNextState()
@@ -31,22 +31,22 @@ public class PlayerMoveState : PlayerState
             return PlayerStateMachine.EPlayerState.Idle;
         }
         
-        if (Master.AttackQueued)
+        if (player.AttackQueued)
         {
             return PlayerStateMachine.EPlayerState.Attack;
         }
 
-        if (Master.JumpQueued)
+        if (player.JumpQueued)
         {
             return PlayerStateMachine.EPlayerState.Jump;
         }
 
-        if (Master.DashQueued)
+        if (player.DashQueued)
         {
             return PlayerStateMachine.EPlayerState.Dash;
         }
 
-        if (!Master.touchingGround)
+        if (!player.touchingGround)
         {
             return PlayerStateMachine.EPlayerState.Fall;
         }

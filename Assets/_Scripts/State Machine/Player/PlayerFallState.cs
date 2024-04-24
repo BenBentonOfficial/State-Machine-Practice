@@ -11,24 +11,24 @@ public class PlayerFallState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
-        if (Master.StateManager.GetLastState().StateKey == PlayerStateMachine.EPlayerState.Move)
+        if (player.StateManager.GetLastState().StateKey == PlayerStateMachine.EPlayerState.Move)
         {
             Debug.Log("coyote time");
             coyoteTimer = 0.2f;
         }
-        Master.SetGravity(1.5f);
+        player.SetGravity(1.5f);
     }
 
     public override void ExitState()
     {
         base.ExitState();
-        Master.SetGravity(4f);
+        player.SetGravity(4f);
     }
 
     public override void UpdateState()
     {
         if(!InputManager.MovementInput().x.Equals(0))
-            Master.SetVelocityX(2f * InputManager.MovementInput().x);
+            player.SetVelocityX(2f * InputManager.MovementInput().x);
 
         
         if (coyoteTimer > 0)
@@ -37,21 +37,21 @@ public class PlayerFallState : PlayerState
         }
         
         
-        Master.CheckFlip();
+        player.CheckFlip();
     }
 
     public override PlayerStateMachine.EPlayerState GetNextState()
     {
-        if (Master.touchingGround)
+        if (player.touchingGround)
             return PlayerStateMachine.EPlayerState.Idle;
 
-        if (!Master.touchingGround && coyoteTimer > 0 && Master.JumpQueued)
+        if (!player.touchingGround && coyoteTimer > 0 && player.JumpQueued)
         {
-            Master.ConsumeDoubleJump();
+            player.ConsumeDoubleJump();
             return PlayerStateMachine.EPlayerState.Jump;
         }
 
-        if (!Master.touchingGround && Master.JumpQueued && Master.CanDoubleJump())
+        if (!player.touchingGround && player.JumpQueued && player.CanDoubleJump())
             return PlayerStateMachine.EPlayerState.DoubleJump;
         
         

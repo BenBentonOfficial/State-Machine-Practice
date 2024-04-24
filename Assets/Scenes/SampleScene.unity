@@ -166,6 +166,7 @@ MonoBehaviour:
   movement: {fileID: -36885607608555113, guid: e62aefba585aa4b4cb921a7ea5ea269a, type: 3}
   attack: {fileID: 4270186023346336961, guid: e62aefba585aa4b4cb921a7ea5ea269a, type: 3}
   jump: {fileID: -7212197542173640402, guid: e62aefba585aa4b4cb921a7ea5ea269a, type: 3}
+  dash: {fileID: 8527961083111998610, guid: e62aefba585aa4b4cb921a7ea5ea269a, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,7 +769,6 @@ GameObject:
   - component: {fileID: 1672746735}
   - component: {fileID: 1672746738}
   - component: {fileID: 1672746732}
-  - component: {fileID: 1672746737}
   - component: {fileID: 1672746736}
   - component: {fileID: 1672746734}
   - component: {fileID: 1672746733}
@@ -825,8 +825,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0014900789, y: -0.06144923}
-  m_Size: {x: 0.1457804, y: 0.49726284}
+  m_Offset: {x: -0.003647305, y: -0.05733937}
+  m_Size: {x: 0.13550563, y: 0.48904312}
   m_Direction: 0
 --- !u!50 &1672746734
 Rigidbody2D:
@@ -905,28 +905,6 @@ MonoBehaviour:
   m_DefaultActionMap: Default
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1672746737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1672746731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09e250fa97054ef4d8ecac31b8bc3ad4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  touchingGround: 0
-  playerAttacks:
-  - {fileID: 11400000, guid: 7d64f9c14067c6c4694ed6238c00001a, type: 2}
-  - {fileID: 11400000, guid: 9bed40382dcd37d41bbd0c52fb8f820f, type: 2}
-  - {fileID: 11400000, guid: ed746655ed7254c4eb274e6c1eab7b41, type: 2}
-  jumpForce: 10
-  groundCheckDistance: 0.37
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &1672746738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,6 +922,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
+  dashVelocity: {x: 4, y: 0}
   playerAttacks:
   - {fileID: 11400000, guid: 7d64f9c14067c6c4694ed6238c00001a, type: 2}
   - {fileID: 11400000, guid: 9bed40382dcd37d41bbd0c52fb8f820f, type: 2}

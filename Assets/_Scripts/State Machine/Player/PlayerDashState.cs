@@ -9,9 +9,9 @@ public class PlayerDashState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
-        Master.CheckFlip();
-        Master.SetVelocity(Master.DashVelocity);
-        Master.SetGravity(0f);
+        player.CheckFlip();
+        player.SetVelocity(player.DashVelocity);
+        player.SetGravity(0f);
         //invincible
     }
 
@@ -19,7 +19,8 @@ public class PlayerDashState : PlayerState
     {
         base.ExitState();
         //Master.ZeroVelocity();
-        Master.SetGravity(4f);
+        player.SetGravity(4f);
+        // stop invincible
     }
 
     public override void UpdateState()
@@ -29,10 +30,13 @@ public class PlayerDashState : PlayerState
 
     public override PlayerStateMachine.EPlayerState GetNextState()
     {
-        if (animEnded)
+        if (animEnded && player.touchingGround)
             return PlayerStateMachine.EPlayerState.Idle;
 
-        if (Master.AttackQueued && Master.touchingGround)
+        if (animEnded && !player.touchingGround)
+            return PlayerStateMachine.EPlayerState.Fall;
+
+        if (player.AttackQueued && player.touchingGround)
             return PlayerStateMachine.EPlayerState.DashAttack;
 
         return StateKey;

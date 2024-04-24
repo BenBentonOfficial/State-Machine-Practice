@@ -3,17 +3,17 @@ using UnityEngine;
 public class PlayerState : BaseState<PlayerStateMachine.EPlayerState>
 {
 
-    protected Player Master;
+    protected Player player;
 
     public override void EnterState()
     {
-        Master.Animator.SetBool(StateKey.ToString(), true);
+        player.Animator.SetBool(StateKey.ToString(), true);
         animEnded = false;
     }
 
     public override void ExitState()
     {
-        Master.Animator.SetBool(StateKey.ToString(), false);
+        player.Animator.SetBool(StateKey.ToString(), false);
     }
 
     public override void UpdateState()
@@ -33,6 +33,6 @@ public class PlayerState : BaseState<PlayerStateMachine.EPlayerState>
 
     protected PlayerState(PlayerStateMachine.EPlayerState key, Player entity, Rigidbody2D rb, Animator anim) : base(key, rb, anim)
     {
-        Master = entity;
+        player = entity;
     }
 }

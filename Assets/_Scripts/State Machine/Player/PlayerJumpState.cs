@@ -10,8 +10,8 @@ public class PlayerJumpState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
-        Master.ConsumeJumpInput();
-        Master.SetVelocityY(Master.JumpForce);
+        player.ConsumeJumpInput();
+        player.SetVelocityY(player.JumpForce);
         stateTimer = 0.1f; // coyote time
     }
 
@@ -23,19 +23,19 @@ public class PlayerJumpState : PlayerState
     public override void UpdateState()
     {
         if(!InputManager.MovementInput().x.Equals(0))
-            Master.SetVelocityX(2f * InputManager.MovementInput().x);
+            player.SetVelocityX(2f * InputManager.MovementInput().x);
 
-        Master.CheckFlip();
+        player.CheckFlip();
     }
 
     public override PlayerStateMachine.EPlayerState GetNextState()
     {
-        if (Master.Velocity().y <= 0)
+        if (player.Velocity().y <= 0)
         {
             return PlayerStateMachine.EPlayerState.Fall;
         }
 
-        if (Master.JumpQueued && Master.CanDoubleJump())
+        if (player.JumpQueued && player.CanDoubleJump())
         {
             return PlayerStateMachine.EPlayerState.DoubleJump;
         }

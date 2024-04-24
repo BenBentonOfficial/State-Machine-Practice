@@ -9,9 +9,9 @@ public class PlayerDashAttackState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
-        Master.ConsumeAttackInput();
+        player.ConsumeAttackInput();
         
-        Master.SetVelocity(Master.PlayerAttacks[2].AttackMoveDirection); // change to dash specific
+        player.SetVelocity(player.PlayerAttacks[2].AttackMoveDirection); // change to dash specific
 
         stateTimer = 0.1f;
     }
@@ -26,7 +26,7 @@ public class PlayerDashAttackState : PlayerState
         stateTimer -= Time.deltaTime;
         if (stateTimer <= 0)
         {
-            Master.ZeroVelocity();
+            player.ZeroVelocity();
         }
     }
 

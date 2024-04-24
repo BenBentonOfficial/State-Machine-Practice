@@ -10,8 +10,8 @@ public class PlayerIdleState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
-        Master.ZeroVelocity();
-        Master.ResetDoubleJump();
+        player.ZeroVelocity();
+        player.ResetDoubleJump();
     }
 
     public override void ExitState()
@@ -25,17 +25,17 @@ public class PlayerIdleState : PlayerState
 
     public override PlayerStateMachine.EPlayerState GetNextState()
     {
-        if (Master.AttackQueued)
+        if (player.AttackQueued)
         {
             return PlayerStateMachine.EPlayerState.Attack;
         }
 
-        if (Master.JumpQueued)
+        if (player.JumpQueued)
         {
             return PlayerStateMachine.EPlayerState.Jump;
         }
 
-        if (Master.DashQueued)
+        if (player.DashQueued)
         {
             return PlayerStateMachine.EPlayerState.Dash;
         }
