@@ -16,7 +16,10 @@ public class PlayerAttackState : PlayerState
     {
         Master.ConsumeAttackInput();
         Master.Animator().SetBool(StateKey.ToString(), true);
+        Master.CheckFlip();
         animEnded = false;
+        if (!Master.touchingGround)
+            animEnded = true;
 
         if (comboCount > 2 || Time.time > lastTimeAttacked + comboWindow)
         {
@@ -43,9 +46,6 @@ public class PlayerAttackState : PlayerState
         {
             Master.ZeroVelocity();
         }
-
-        if (!Master.touchingGround)
-            animEnded = true;
     }
 
     public override PlayerStateMachine.EPlayerState GetNextState()

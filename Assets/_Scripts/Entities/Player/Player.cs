@@ -75,4 +75,16 @@ public class Player : Entity
             ConsumeJumpInput();
         }
     }
+
+    public override void CheckFlip()
+    {
+        if (InputManager.MovementInput().x < 0 && facingDirection == 1)
+        {
+            Flip(180f);
+        }
+        else if (InputManager.MovementInput().x > 0 && facingDirection == -1)
+        {
+            Flip(0f);
+        }
+    }
 }
