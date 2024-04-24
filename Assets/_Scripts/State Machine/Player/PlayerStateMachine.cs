@@ -23,6 +23,7 @@ public class PlayerStateMachine : StateManager<PlayerStateMachine.EPlayerState>
         States.Add(EPlayerState.DoubleJump, new PlayerDoubleJumpState(EPlayerState.DoubleJump, entity, rb, anim));
         States.Add(EPlayerState.Fall, new PlayerFallState(EPlayerState.Fall, entity, rb, anim));
         States.Add(EPlayerState.Dash, new PlayerDashState(EPlayerState.Dash, entity, rb, anim));
+        States.Add(EPlayerState.DashAttack, new PlayerDashAttackState(EPlayerState.DashAttack, entity, rb, anim));
 
         CurrentState = States[EPlayerState.Idle];
     }

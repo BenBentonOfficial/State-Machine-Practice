@@ -41,6 +41,11 @@ public class PlayerMoveState : PlayerState
             return PlayerStateMachine.EPlayerState.Jump;
         }
 
+        if (Master.DashQueued)
+        {
+            return PlayerStateMachine.EPlayerState.Dash;
+        }
+
         if (!Master.touchingGround)
         {
             return PlayerStateMachine.EPlayerState.Fall;

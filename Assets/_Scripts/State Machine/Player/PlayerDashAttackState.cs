@@ -1,39 +1,39 @@
 using UnityEngine;
 
-public class PlayerDashState : PlayerState
+public class PlayerDashAttackState : PlayerState
 {
-    public PlayerDashState(PlayerStateMachine.EPlayerState key, Player entity, Rigidbody2D rb, Animator anim) : base(key, entity, rb, anim)
+    public PlayerDashAttackState(PlayerStateMachine.EPlayerState key, Player entity, Rigidbody2D rb, Animator anim) : base(key, entity, rb, anim)
     {
     }
 
     public override void EnterState()
     {
         base.EnterState();
-        Master.CheckFlip();
-        Master.SetVelocity(Master.DashVelocity);
-        Master.SetGravity(0f);
-        //invincible
+        Master.ConsumeAttackInput();
+        
+        Master.SetVelocity(Master.PlayerAttacks[2].AttackMoveDirection); // change to dash specific
+
+        stateTimer = 0.1f;
     }
 
     public override void ExitState()
     {
         base.ExitState();
-        //Master.ZeroVelocity();
-        Master.SetGravity(4f);
     }
 
     public override void UpdateState()
     {
-        
+        stateTimer -= Time.deltaTime;
+        if (stateTimer <= 0)
+        {
+            Master.ZeroVelocity();
+        }
     }
 
     public override PlayerStateMachine.EPlayerState GetNextState()
     {
         if (animEnded)
             return PlayerStateMachine.EPlayerState.Idle;
-
-        if (Master.AttackQueued && Master.touchingGround)
-            return PlayerStateMachine.EPlayerState.DashAttack;
 
         return StateKey;
     }
