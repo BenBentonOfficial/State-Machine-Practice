@@ -1,24 +1,25 @@
+using UnityEngine;
+
 public class PlayerMoveState : BaseState<PlayerStateMachine.EPlayerState>
 {
 
-    public PlayerMoveState(PlayerStateMachine.EPlayerState key) : base(key)
-    {
-    }
+    private Player Master;
 
     public override void EnterState()
     {
-        PlayerComponents.Animator().SetBool(StateKey.ToString(), true);
+        Master.Animator().SetBool(StateKey.ToString(), true);
     }
 
     public override void ExitState()
     {
-        PlayerComponents.ZeroVelocity();
-        PlayerComponents.Animator().SetBool(StateKey.ToString(), false);
+        Master.ZeroVelocity();
+        Master.Animator().SetBool(StateKey.ToString(), false);
     }
 
     public override void UpdateState()
     {
-        PlayerComponents.SetVelocityX(InputManager.MovementInput().x * 3f);
+        Master.SetVelocityX(InputManager.MovementInput().x * 3f);
+        Master.CheckFlip();
     }
 
     public override PlayerStateMachine.EPlayerState GetNextState()
@@ -28,14 +29,19 @@ public class PlayerMoveState : BaseState<PlayerStateMachine.EPlayerState>
             return PlayerStateMachine.EPlayerState.Idle;
         }
         
-        if (PlayerComponents.AttackQueued())
+        if (Master.AttackQueued())
         {
             return PlayerStateMachine.EPlayerState.Attack;
         }
 
-        if (PlayerComponents.JumpQueued())
+        if (Master.JumpQueued())
         {
             return PlayerStateMachine.EPlayerState.Jump;
+        }
+
+        if (!Master.touchingGround)
+        {
+            return PlayerStateMachine.EPlayerState.InAir;
         }
         
         return StateKey;
@@ -44,5 +50,10 @@ public class PlayerMoveState : BaseState<PlayerStateMachine.EPlayerState>
     public override void AnimationFinishTrigger()
     {
         throw new System.NotImplementedException();
+    }
+
+    public PlayerMoveState(PlayerStateMachine.EPlayerState key, Player entity, Rigidbody2D rb, Animator anim) : base(key, rb, anim)
+    {
+        Master = entity;
     }
 }

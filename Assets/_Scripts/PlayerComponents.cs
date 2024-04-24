@@ -80,10 +80,8 @@ public class PlayerComponents : MonoBehaviour
     private void Update()
     {
         inputConsumeTimer -= Time.deltaTime;
-        Debug.Log(inputConsumeTimer <= 0);
         if (inputConsumeTimer <= 0)
         {
-            Debug.Log("Consume");
             ConsumeAttackInput();
             ConsumeJumpInput();
         }

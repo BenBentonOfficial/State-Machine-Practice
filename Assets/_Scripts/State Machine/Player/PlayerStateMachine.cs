@@ -1,23 +1,23 @@
+using UnityEngine;
+
 public class PlayerStateMachine : StateManager<PlayerStateMachine.EPlayerState>
 {
     public enum EPlayerState
     {
         Idle,
         Move,
-        Action,
         Attack,
         InAir,
         Jump
     }
-
-    private void Awake()
+    
+    public void Initialize(Player entity, Rigidbody2D rb, Animator anim)
     {
-        States.Add(EPlayerState.Idle, new PlayerIdleState(EPlayerState.Idle));
-        States.Add(EPlayerState.Move, new PlayerMoveState(EPlayerState.Move));
-        States.Add(EPlayerState.Action, new PlayerActionState(EPlayerState.Action));
-        States.Add(EPlayerState.Attack, new PlayerAttackState(EPlayerState.Attack));
-        States.Add(EPlayerState.Jump, new PlayerJumpState(EPlayerState.Jump));
-        States.Add(EPlayerState.InAir, new PlayerInAirState(EPlayerState.InAir));
+        States.Add(EPlayerState.Idle, new PlayerIdleState(EPlayerState.Idle, entity, rb, anim));
+        States.Add(EPlayerState.Move, new PlayerMoveState(EPlayerState.Move, entity, rb, anim));
+        States.Add(EPlayerState.Attack, new PlayerAttackState(EPlayerState.Attack, entity, rb, anim));
+        States.Add(EPlayerState.Jump, new PlayerJumpState(EPlayerState.Jump, entity, rb, anim));
+        States.Add(EPlayerState.InAir, new PlayerInAirState(EPlayerState.InAir, entity, rb, anim));
 
         CurrentState = States[EPlayerState.Idle];
     }

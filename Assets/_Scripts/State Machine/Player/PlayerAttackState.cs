@@ -2,9 +2,7 @@ using UnityEngine;
 
 public class PlayerAttackState : BaseState<PlayerStateMachine.EPlayerState>
 {
-    public PlayerAttackState(PlayerStateMachine.EPlayerState key) : base(key)
-    {
-    }
+
 
     private int comboCount = 0;
     private float lastTimeAttacked;
@@ -13,11 +11,12 @@ public class PlayerAttackState : BaseState<PlayerStateMachine.EPlayerState>
     private float stateTimer;
     private bool animEnded;
 
+    private Player Master;
+
     public override void EnterState()
     {
-        //attackQueued = false;
-        PlayerComponents.ConsumeAttackInput();
-        PlayerComponents.Animator().SetBool(StateKey.ToString(), true);
+        Master.ConsumeAttackInput();
+        Master.Animator().SetBool(StateKey.ToString(), true);
         animEnded = false;
 
         if (comboCount > 2 || Time.time > lastTimeAttacked + comboWindow)
@@ -25,18 +24,17 @@ public class PlayerAttackState : BaseState<PlayerStateMachine.EPlayerState>
             comboCount = 0;
         }
         
-        PlayerComponents.Animator().SetInteger("Combo", comboCount);
-        PlayerComponents.SetVelocity(PlayerComponents.instance.PlayerAttacks()[comboCount].AttackMoveDirection);
+        Master.Animator().SetInteger("Combo", comboCount);
+        Master.SetVelocity(Master.PlayerAttacks()[comboCount].AttackMoveDirection);
 
         stateTimer = 0.1f;
     }
 
     public override void ExitState()
     {
-        //Debug.Log(PlayerComponents.AttackQueued());
         comboCount++;
         lastTimeAttacked = Time.time;
-        PlayerComponents.Animator().SetBool(StateKey.ToString(), false);
+        Master.Animator().SetBool(StateKey.ToString(), false);
     }
 
     public override void UpdateState()
@@ -44,7 +42,7 @@ public class PlayerAttackState : BaseState<PlayerStateMachine.EPlayerState>
         stateTimer -= Time.deltaTime;
         if (stateTimer <= 0)
         {
-            PlayerComponents.ZeroVelocity();
+            Master.ZeroVelocity();
         }
     }
 
@@ -60,7 +58,11 @@ public class PlayerAttackState : BaseState<PlayerStateMachine.EPlayerState>
 
     public override void AnimationFinishTrigger()
     {
-        Debug.Log("Trying to end anim");
         animEnded = true;
+    }
+
+    public PlayerAttackState(PlayerStateMachine.EPlayerState key, Player entity, Rigidbody2D rb, Animator anim) : base(key, rb, anim)
+    {
+        Master = entity;
     }
 }

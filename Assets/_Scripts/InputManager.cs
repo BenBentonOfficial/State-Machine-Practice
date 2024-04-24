@@ -25,8 +25,8 @@ public class InputManager : MonoBehaviour
         }
 
         instance = this;
-        attack.action.performed += context => Attack(context);
-        jump.action.performed += context => Jump(context);
+        attack.action.performed += Attack;
+        jump.action.performed += Jump;
     }
 
     public static Vector2 MovementInput()
@@ -41,7 +41,6 @@ public class InputManager : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext context)
     {
-        Debug.Log("Trying to jump");
         jumpAction?.Invoke();
     }
     

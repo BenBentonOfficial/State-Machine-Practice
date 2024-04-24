@@ -2,20 +2,19 @@ using UnityEngine;
 
 public class PlayerIdleState : BaseState<PlayerStateMachine.EPlayerState>
 {
-    public PlayerIdleState(PlayerStateMachine.EPlayerState key) : base(key)
-    {
-    }
+
+    private Player Master;
 
     public override void EnterState()
     {
         //attacking = false;
-        PlayerComponents.Animator().SetBool(StateKey.ToString(), true);
+        Master.Animator().SetBool(StateKey.ToString(), true);
         //InputManager.instance.attackAction += RegisterAttackInput;
     }
 
     public override void ExitState()
     {
-        PlayerComponents.Animator().SetBool(StateKey.ToString(), false);
+        Master.Animator().SetBool(StateKey.ToString(), false);
         //InputManager.instance.attackAction -= RegisterAttackInput;
     }
 
@@ -26,12 +25,12 @@ public class PlayerIdleState : BaseState<PlayerStateMachine.EPlayerState>
 
     public override PlayerStateMachine.EPlayerState GetNextState()
     {
-        if (PlayerComponents.AttackQueued())
+        if (Master.AttackQueued())
         {
             return PlayerStateMachine.EPlayerState.Attack;
         }
 
-        if (PlayerComponents.JumpQueued())
+        if (Master.JumpQueued())
         {
             return PlayerStateMachine.EPlayerState.Jump;
         }
@@ -47,5 +46,10 @@ public class PlayerIdleState : BaseState<PlayerStateMachine.EPlayerState>
     public override void AnimationFinishTrigger()
     {
         throw new System.NotImplementedException();
+    }
+
+    public PlayerIdleState(PlayerStateMachine.EPlayerState key, Player entity, Rigidbody2D rb, Animator anim) : base(key, rb, anim)
+    {
+        Master = entity;
     }
 }
