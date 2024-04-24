@@ -9,15 +9,13 @@ public class PlayerAttackState : PlayerState
     private int comboCount = 0;
     private float lastTimeAttacked;
     private float comboWindow = 0.2f;
-    
-    private bool animEnded;
 
     public override void EnterState()
     {
+        base.EnterState();
         Master.ConsumeAttackInput();
-        Master.Animator().SetBool(StateKey.ToString(), true);
+        
         Master.CheckFlip();
-        animEnded = false;
         if (!Master.touchingGround)
             animEnded = true;
 
@@ -26,8 +24,8 @@ public class PlayerAttackState : PlayerState
             comboCount = 0;
         }
         
-        Master.Animator().SetInteger("Combo", comboCount);
-        Master.SetVelocity(Master.PlayerAttacks()[comboCount].AttackMoveDirection);
+        Master.Animator.SetInteger("Combo", comboCount);
+        Master.SetVelocity(Master.PlayerAttacks[comboCount].AttackMoveDirection);
 
         stateTimer = 0.1f;
     }
@@ -36,7 +34,7 @@ public class PlayerAttackState : PlayerState
     {
         comboCount++;
         lastTimeAttacked = Time.time;
-        Master.Animator().SetBool(StateKey.ToString(), false);
+        base.ExitState();
     }
 
     public override void UpdateState()

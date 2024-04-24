@@ -55,7 +55,7 @@ public class Entity : MonoBehaviour
         Gizmos.DrawLine(transform.position, groundCheckEndPoint);
     }
 
-    public Animator Animator() => animator;
-    public float JumpForce() => jumpForce;
-    public int FacingDir() => facingDirection;
+    public Animator Animator => animator;
+    public float JumpForce => jumpForce;
+    public int FacingDir => facingDirection;
 }

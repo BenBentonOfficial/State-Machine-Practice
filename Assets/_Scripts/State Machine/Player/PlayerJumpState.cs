@@ -9,15 +9,15 @@ public class PlayerJumpState : PlayerState
 
     public override void EnterState()
     {
+        base.EnterState();
         Master.ConsumeJumpInput();
-        Master.SetVelocityY(Master.JumpForce());
-        Master.Animator().SetBool(StateKey.ToString(), true);
+        Master.SetVelocityY(Master.JumpForce);
         stateTimer = 0.1f; // coyote time
     }
 
     public override void ExitState()
     {
-        Master.Animator().SetBool(StateKey.ToString(), false);
+        base.ExitState();
     }
 
     public override void UpdateState()
@@ -32,10 +32,10 @@ public class PlayerJumpState : PlayerState
     {
         if (Master.Velocity().y <= 0)
         {
-            return PlayerStateMachine.EPlayerState.InAir;
+            return PlayerStateMachine.EPlayerState.Fall;
         }
 
-        if (Master.JumpQueued() && Master.CanDoubleJump())
+        if (Master.JumpQueued && Master.CanDoubleJump())
         {
             return PlayerStateMachine.EPlayerState.DoubleJump;
         }

@@ -13,8 +13,11 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] private InputActionReference jump;
 
+    [SerializeField] private InputActionReference dash;
+    
     public Action attackAction;
     public Action jumpAction;
+    public Action dashAction;
     
     private void Awake()
     {
@@ -27,6 +30,7 @@ public class InputManager : MonoBehaviour
         instance = this;
         attack.action.performed += Attack;
         jump.action.performed += Jump;
+        dash.action.performed += Dash;
     }
 
     public static Vector2 MovementInput()
@@ -42,6 +46,11 @@ public class InputManager : MonoBehaviour
     private void Jump(InputAction.CallbackContext context)
     {
         jumpAction?.Invoke();
+    }
+
+    private void Dash(InputAction.CallbackContext context)
+    {
+        dashAction?.Invoke();
     }
     
 }

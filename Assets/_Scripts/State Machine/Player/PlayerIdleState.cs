@@ -9,14 +9,14 @@ public class PlayerIdleState : PlayerState
 
     public override void EnterState()
     {
+        base.EnterState();
         Master.ZeroVelocity();
         Master.ResetDoubleJump();
-        Master.Animator().SetBool(StateKey.ToString(), true);
     }
 
     public override void ExitState()
     {
-        Master.Animator().SetBool(StateKey.ToString(), false);
+        base.ExitState();
     }
 
     public override void UpdateState()
@@ -25,14 +25,19 @@ public class PlayerIdleState : PlayerState
 
     public override PlayerStateMachine.EPlayerState GetNextState()
     {
-        if (Master.AttackQueued())
+        if (Master.AttackQueued)
         {
             return PlayerStateMachine.EPlayerState.Attack;
         }
 
-        if (Master.JumpQueued())
+        if (Master.JumpQueued)
         {
             return PlayerStateMachine.EPlayerState.Jump;
+        }
+
+        if (Master.DashQueued)
+        {
+            return PlayerStateMachine.EPlayerState.Dash;
         }
         
         if (InputManager.MovementInput().magnitude > 0)

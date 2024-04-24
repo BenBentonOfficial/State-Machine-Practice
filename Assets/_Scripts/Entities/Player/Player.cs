@@ -14,6 +14,7 @@ public class Player : Entity
 
         InputManager.instance.attackAction += QueueAttackInput;
         InputManager.instance.jumpAction += QueueJumpInput;
+        InputManager.instance.dashAction += QueueDashInput;
     }
     #endregion
 
@@ -21,12 +22,19 @@ public class Player : Entity
 
     private bool attackQueued;
     private bool jumpQueued;
+    private bool dashQueued;
+    
     private float inputConsumeTimer;
     private bool doubleJumpConsumed = false;
 
+    [SerializeField] private Vector2 dashVelocity;
     [SerializeField] private List<PlayerAttackSO> playerAttacks;
-    public List<PlayerAttackSO> PlayerAttacks() => playerAttacks;
+    public List<PlayerAttackSO> PlayerAttacks => playerAttacks;
+    public Vector2 DashVelocity => dashVelocity;
+    
+    #endregion
 
+    #region Double Jump
     public bool CanDoubleJump()
     {
         return !doubleJumpConsumed;
@@ -58,11 +66,22 @@ public class Player : Entity
         jumpQueued = true;
     }
 
+    private void QueueDashInput()
+    {
+        Debug.Log("Dash Queued");
+        inputConsumeTimer = 0.1f;
+        dashQueued = true;
+    }
+
 
     public void ConsumeAttackInput() => attackQueued = false;
     public void ConsumeJumpInput() => jumpQueued = false;
-    public bool AttackQueued() => attackQueued;
-    public bool JumpQueued() => jumpQueued;
+
+    public void ConsumeDashInput() => dashQueued = false;
+    public bool AttackQueued => attackQueued;
+    public bool JumpQueued => jumpQueued;
+
+    public bool DashQueued => dashQueued;
     
     #endregion
 
@@ -73,6 +92,7 @@ public class Player : Entity
         {
             ConsumeAttackInput();
             ConsumeJumpInput();
+            ConsumeDashInput();
         }
     }
 

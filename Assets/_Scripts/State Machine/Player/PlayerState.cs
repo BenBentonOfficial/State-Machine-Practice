@@ -7,12 +7,13 @@ public class PlayerState : BaseState<PlayerStateMachine.EPlayerState>
 
     public override void EnterState()
     {
-        throw new System.NotImplementedException();
+        Master.Animator.SetBool(StateKey.ToString(), true);
+        animEnded = false;
     }
 
     public override void ExitState()
     {
-        throw new System.NotImplementedException();
+        Master.Animator.SetBool(StateKey.ToString(), false);
     }
 
     public override void UpdateState()

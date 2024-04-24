@@ -9,15 +9,15 @@ public class PlayerDoubleJumpState : PlayerState
 
     public override void EnterState()
     {
+        base.EnterState();
         Master.ConsumeJumpInput();
         Master.ConsumeDoubleJump();
-        Master.SetVelocityY(Master.JumpForce());
-        Master.Animator().SetBool("Jump", true); // add doubleJump to animator
+        Master.SetVelocityY(Master.JumpForce); // add doubleJump to animator
     }
 
     public override void ExitState()
     {
-        Master.Animator().SetBool("Jump", false); // add doubleJump to animator
+        base.ExitState();
     }
 
     public override void UpdateState()
@@ -32,7 +32,7 @@ public class PlayerDoubleJumpState : PlayerState
     {
         if (Master.Velocity().y <= 0)
         {
-            return PlayerStateMachine.EPlayerState.InAir;
+            return PlayerStateMachine.EPlayerState.Fall;
         }
 
         return StateKey;

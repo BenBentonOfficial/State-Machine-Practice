@@ -19,6 +19,7 @@ public abstract class BaseState<EState>
     public Animator Animator { get; set; }
 
     protected float stateTimer;
+    protected bool animEnded;
 
     public abstract void EnterState();
     public abstract void ExitState();

@@ -9,13 +9,13 @@ public class PlayerMoveState : PlayerState
 
     public override void EnterState()
     {
-        Master.Animator().SetBool(StateKey.ToString(), true);
+        base.EnterState();
     }
 
     public override void ExitState()
     {
+        base.ExitState();
         Master.ZeroVelocity();
-        Master.Animator().SetBool(StateKey.ToString(), false);
     }
 
     public override void UpdateState()
@@ -31,19 +31,19 @@ public class PlayerMoveState : PlayerState
             return PlayerStateMachine.EPlayerState.Idle;
         }
         
-        if (Master.AttackQueued())
+        if (Master.AttackQueued)
         {
             return PlayerStateMachine.EPlayerState.Attack;
         }
 
-        if (Master.JumpQueued())
+        if (Master.JumpQueued)
         {
             return PlayerStateMachine.EPlayerState.Jump;
         }
 
         if (!Master.touchingGround)
         {
-            return PlayerStateMachine.EPlayerState.InAir;
+            return PlayerStateMachine.EPlayerState.Fall;
         }
         
         return StateKey;
