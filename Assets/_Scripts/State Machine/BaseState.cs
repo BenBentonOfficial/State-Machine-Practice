@@ -18,6 +18,8 @@ public abstract class BaseState<EState>
     public Rigidbody2D RB { get; set; }
     public Animator Animator { get; set; }
 
+    protected float stateTimer;
+
     public abstract void EnterState();
     public abstract void ExitState();
     public abstract void UpdateState();

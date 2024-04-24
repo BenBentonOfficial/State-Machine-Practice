@@ -1,9 +1,11 @@
 using UnityEngine;
 
-public class PlayerMoveState : BaseState<PlayerStateMachine.EPlayerState>
+public class PlayerMoveState : PlayerState
 {
 
-    private Player Master;
+    public PlayerMoveState(PlayerStateMachine.EPlayerState key, Player entity, Rigidbody2D rb, Animator anim) : base(key, entity, rb, anim)
+    {
+    }
 
     public override void EnterState()
     {
@@ -52,8 +54,6 @@ public class PlayerMoveState : BaseState<PlayerStateMachine.EPlayerState>
         throw new System.NotImplementedException();
     }
 
-    public PlayerMoveState(PlayerStateMachine.EPlayerState key, Player entity, Rigidbody2D rb, Animator anim) : base(key, rb, anim)
-    {
-        Master = entity;
-    }
+
+    
 }

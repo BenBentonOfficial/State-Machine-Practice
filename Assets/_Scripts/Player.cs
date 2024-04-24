@@ -22,9 +22,25 @@ public class Player : Entity
     private bool attackQueued;
     private bool jumpQueued;
     private float inputConsumeTimer;
+    private bool doubleJumpConsumed = false;
 
     [SerializeField] private List<PlayerAttackSO> playerAttacks;
     public List<PlayerAttackSO> PlayerAttacks() => playerAttacks;
+
+    public bool CanDoubleJump()
+    {
+        return !doubleJumpConsumed;
+    }
+
+    public void ConsumeDoubleJump()
+    {
+        doubleJumpConsumed = true;
+    }
+
+    public void ResetDoubleJump()
+    {
+        doubleJumpConsumed = false;
+    }
 
     #endregion
 
@@ -38,9 +54,10 @@ public class Player : Entity
 
     private void QueueJumpInput()
     {
-        inputConsumeTimer = 0.2f;
+        inputConsumeTimer = 0.1f;
         jumpQueued = true;
     }
+
 
     public void ConsumeAttackInput() => attackQueued = false;
     public void ConsumeJumpInput() => jumpQueued = false;

@@ -1,23 +1,23 @@
 using UnityEngine;
 
-public class PlayerJumpState : PlayerState
+public class PlayerDoubleJumpState : PlayerState
 {
-
-    public PlayerJumpState(PlayerStateMachine.EPlayerState key, Player entity, Rigidbody2D rb, Animator anim) : base(key, entity, rb, anim)
+    public PlayerDoubleJumpState(PlayerStateMachine.EPlayerState key, Player entity, Rigidbody2D rb, Animator anim) : base(key, entity, rb, anim)
     {
     }
+
 
     public override void EnterState()
     {
         Master.ConsumeJumpInput();
+        Master.ConsumeDoubleJump();
         Master.SetVelocityY(Master.JumpForce());
-        Master.Animator().SetBool(StateKey.ToString(), true);
-        stateTimer = 0.1f; // coyote time
+        Master.Animator().SetBool("Jump", true); // add doubleJump to animator
     }
 
     public override void ExitState()
     {
-        Master.Animator().SetBool(StateKey.ToString(), false);
+        Master.Animator().SetBool("Jump", false); // add doubleJump to animator
     }
 
     public override void UpdateState()
@@ -35,19 +35,11 @@ public class PlayerJumpState : PlayerState
             return PlayerStateMachine.EPlayerState.InAir;
         }
 
-        if (Master.JumpQueued() && Master.CanDoubleJump())
-        {
-            return PlayerStateMachine.EPlayerState.DoubleJump;
-        }
-
         return StateKey;
     }
 
     public override void AnimationFinishTrigger()
     {
-        throw new System.NotImplementedException();
+        base.AnimationFinishTrigger();
     }
-
-
-    
 }

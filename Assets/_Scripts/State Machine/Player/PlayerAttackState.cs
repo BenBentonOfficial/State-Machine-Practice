@@ -1,17 +1,16 @@
 using UnityEngine;
 
-public class PlayerAttackState : BaseState<PlayerStateMachine.EPlayerState>
+public class PlayerAttackState : PlayerState
 {
-
+    public PlayerAttackState(PlayerStateMachine.EPlayerState key, Player entity, Rigidbody2D rb, Animator anim) : base(key, entity, rb, anim)
+    {
+    }
 
     private int comboCount = 0;
     private float lastTimeAttacked;
     private float comboWindow = 0.2f;
-
-    private float stateTimer;
+    
     private bool animEnded;
-
-    private Player Master;
 
     public override void EnterState()
     {
@@ -44,6 +43,9 @@ public class PlayerAttackState : BaseState<PlayerStateMachine.EPlayerState>
         {
             Master.ZeroVelocity();
         }
+
+        if (!Master.touchingGround)
+            animEnded = true;
     }
 
     public override PlayerStateMachine.EPlayerState GetNextState()
@@ -61,8 +63,5 @@ public class PlayerAttackState : BaseState<PlayerStateMachine.EPlayerState>
         animEnded = true;
     }
 
-    public PlayerAttackState(PlayerStateMachine.EPlayerState key, Player entity, Rigidbody2D rb, Animator anim) : base(key, rb, anim)
-    {
-        Master = entity;
-    }
+
 }

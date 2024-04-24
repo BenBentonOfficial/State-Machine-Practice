@@ -1,26 +1,26 @@
 using UnityEngine;
 
-public class PlayerIdleState : BaseState<PlayerStateMachine.EPlayerState>
+public class PlayerIdleState : PlayerState
 {
 
-    private Player Master;
+    public PlayerIdleState(PlayerStateMachine.EPlayerState key, Player entity, Rigidbody2D rb, Animator anim) : base(key, entity, rb, anim)
+    {
+    }
 
     public override void EnterState()
     {
-        //attacking = false;
+        Master.ZeroVelocity();
+        Master.ResetDoubleJump();
         Master.Animator().SetBool(StateKey.ToString(), true);
-        //InputManager.instance.attackAction += RegisterAttackInput;
     }
 
     public override void ExitState()
     {
         Master.Animator().SetBool(StateKey.ToString(), false);
-        //InputManager.instance.attackAction -= RegisterAttackInput;
     }
 
     public override void UpdateState()
     {
-        //throw new System.NotImplementedException();
     }
 
     public override PlayerStateMachine.EPlayerState GetNextState()
@@ -46,10 +46,5 @@ public class PlayerIdleState : BaseState<PlayerStateMachine.EPlayerState>
     public override void AnimationFinishTrigger()
     {
         throw new System.NotImplementedException();
-    }
-
-    public PlayerIdleState(PlayerStateMachine.EPlayerState key, Player entity, Rigidbody2D rb, Animator anim) : base(key, rb, anim)
-    {
-        Master = entity;
     }
 }

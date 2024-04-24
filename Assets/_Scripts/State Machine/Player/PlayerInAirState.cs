@@ -1,12 +1,20 @@
 using UnityEngine;
 
-public class PlayerInAirState : BaseState<PlayerStateMachine.EPlayerState>
+public class PlayerInAirState : PlayerState
 {
-    //TODO: Change gravity scale to a setting in playerComponents. Also, change playerComponents to instead have each state get a copy
-    private Player Master;
+    public PlayerInAirState(PlayerStateMachine.EPlayerState key, Player entity, Rigidbody2D rb, Animator anim) : base(key, entity, rb, anim)
+    {
+    }
+
+    private float coyoteTimer = 0;
 
     public override void EnterState()
     {
+        if (Master.StateManager.GetLastState().StateKey == PlayerStateMachine.EPlayerState.Move)
+        {
+            Debug.Log("coyote time");
+            coyoteTimer = 0.2f;
+        }
         Master.Animator().SetBool("Jump", true);
         Master.SetGravity(1.5f);
     }
@@ -21,6 +29,13 @@ public class PlayerInAirState : BaseState<PlayerStateMachine.EPlayerState>
     {
         if(!InputManager.MovementInput().x.Equals(0))
             Master.SetVelocityX(2f * InputManager.MovementInput().x);
+
+        
+        if (coyoteTimer > 0)
+        {
+           coyoteTimer -= Time.deltaTime;
+        }
+        
         
         Master.CheckFlip();
     }
@@ -29,6 +44,16 @@ public class PlayerInAirState : BaseState<PlayerStateMachine.EPlayerState>
     {
         if (Master.touchingGround)
             return PlayerStateMachine.EPlayerState.Idle;
+
+        if (!Master.touchingGround && coyoteTimer > 0 && Master.JumpQueued())
+        {
+            Master.ConsumeDoubleJump();
+            return PlayerStateMachine.EPlayerState.Jump;
+        }
+
+        if (!Master.touchingGround && Master.JumpQueued() && Master.CanDoubleJump())
+            return PlayerStateMachine.EPlayerState.DoubleJump;
+        
         
         return StateKey;
     }
@@ -38,8 +63,5 @@ public class PlayerInAirState : BaseState<PlayerStateMachine.EPlayerState>
         throw new System.NotImplementedException();
     }
 
-    public PlayerInAirState(PlayerStateMachine.EPlayerState key, Player entity, Rigidbody2D rb, Animator anim) : base(key, rb, anim)
-    {
-        Master = entity;
-    }
+    
 }

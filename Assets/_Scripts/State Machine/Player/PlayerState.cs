@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerState : BaseState<PlayerStateMachine.EPlayerState>
 {
 
+    protected Player Master;
 
     public override void EnterState()
     {
@@ -29,7 +30,8 @@ public class PlayerState : BaseState<PlayerStateMachine.EPlayerState>
         throw new System.NotImplementedException();
     }
 
-    public PlayerState(PlayerStateMachine.EPlayerState key, Player entity, Rigidbody2D rb, Animator anim) : base(key, rb, anim)
+    protected PlayerState(PlayerStateMachine.EPlayerState key, Player entity, Rigidbody2D rb, Animator anim) : base(key, rb, anim)
     {
+        Master = entity;
     }
 }
