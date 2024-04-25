@@ -18,8 +18,7 @@ public class PlayerDashState : PlayerState
     public override void ExitState()
     {
         base.ExitState();
-        //Master.ZeroVelocity();
-        player.SetGravity(4f);
+        player.SetGravity(player.Gravity);
         // stop invincible
     }
 
@@ -30,6 +29,9 @@ public class PlayerDashState : PlayerState
 
     public override PlayerStateMachine.EPlayerState GetNextState()
     {
+        if (player.JumpQueued && player.touchingGround && animEnded)
+            return PlayerStateMachine.EPlayerState.Jump;
+        
         if (animEnded && player.touchingGround)
             return PlayerStateMachine.EPlayerState.Idle;
 
@@ -38,6 +40,7 @@ public class PlayerDashState : PlayerState
 
         if (player.AttackQueued && player.touchingGround)
             return PlayerStateMachine.EPlayerState.DashAttack;
+        
 
         return StateKey;
     }

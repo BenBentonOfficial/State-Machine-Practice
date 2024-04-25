@@ -34,24 +34,36 @@ public class PlayerAttackState : PlayerState
     {
         comboCount++;
         lastTimeAttacked = Time.time;
+        player.SetGravity(player.Gravity);
+        player.ZeroVelocity();
         base.ExitState();
     }
 
     public override void UpdateState()
     {
         stateTimer -= Time.deltaTime;
-        if (stateTimer <= 0)
+        if (stateTimer > 0)
         {
-            player.ZeroVelocity();
+            if (stateTimer <= 0)
+            { 
+                player.ZeroVelocity();
+            }
         }
+        
+        if(stateTimer < 0 && player.touchingGround)
+            player.ZeroVelocity();
+        
     }
 
     public override PlayerStateMachine.EPlayerState GetNextState()
     {
-        if (animEnded || !player.touchingGround)
+        if (animEnded)
         {
             return PlayerStateMachine.EPlayerState.Idle;
         }
+
+        //if (!player.touchingGround)
+            //return PlayerStateMachine.EPlayerState.Fall;
 
         return StateKey;
     }

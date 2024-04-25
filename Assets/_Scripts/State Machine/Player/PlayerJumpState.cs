@@ -11,7 +11,19 @@ public class PlayerJumpState : PlayerState
     {
         base.EnterState();
         player.ConsumeJumpInput();
-        player.SetVelocityY(player.JumpForce);
+
+        if (player.StateManager.GetLastState().StateKey == PlayerStateMachine.EPlayerState.Dash)
+        {
+            player.SetVelocityY(player.JumpForce * 1.5f);
+            player.SetVelocityX(player.Velocity().x / 4);
+        }
+        else
+        {
+            player.SetVelocityY(player.JumpForce);
+        }
+            
+
+        Debug.Log(player.Velocity());
         stateTimer = 0.1f; // coyote time
     }
 

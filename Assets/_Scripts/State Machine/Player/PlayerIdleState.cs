@@ -39,6 +39,10 @@ public class PlayerIdleState : PlayerState
         {
             return PlayerStateMachine.EPlayerState.Dash;
         }
+
+
+        if (!player.touchingGround)
+            return PlayerStateMachine.EPlayerState.Fall;
         
         if (InputManager.MovementInput().magnitude > 0)
         {
