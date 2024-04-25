@@ -20,7 +20,7 @@ public class PlayerMoveState : PlayerState
 
     public override void UpdateState()
     {
-        player.SetVelocityX(InputManager.MovementInput().x * 3f);
+        player.SetVelocityX(InputManager.MovementInput().x * player.MoveSpeed);
         player.CheckFlip();
     }
 

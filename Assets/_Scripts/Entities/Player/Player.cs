@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : Entity
@@ -27,10 +29,14 @@ public class Player : Entity
     private float inputConsumeTimer;
     private bool doubleJumpConsumed = false;
 
+    [SerializeField] private float moveSpeed;
     [SerializeField] private Vector2 dashVelocity;
     [SerializeField] private List<PlayerAttackSO> playerAttacks;
+    [SerializeField] private float gravity;
     public List<PlayerAttackSO> PlayerAttacks => playerAttacks;
     public Vector2 DashVelocity => dashVelocity;
+    public float Gravity => gravity;
+    public float MoveSpeed => moveSpeed;
     
     #endregion
 
@@ -107,4 +113,20 @@ public class Player : Entity
             Flip(0f);
         }
     }
+
+    #region Attacks
+
+    public void Attack()
+    {
+        var hits = Physics2D.CircleCastAll(attackTransform.position, 0.3f, Vector2.zero);
+    }
+
+    #endregion
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(attackTransform.position, 1f);
+    }
+    
+    
 }

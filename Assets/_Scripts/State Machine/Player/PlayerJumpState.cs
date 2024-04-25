@@ -23,7 +23,7 @@ public class PlayerJumpState : PlayerState
     public override void UpdateState()
     {
         if(!InputManager.MovementInput().x.Equals(0))
-            player.SetVelocityX(2f * InputManager.MovementInput().x);
+            player.SetVelocityX(player.MoveSpeed * InputManager.MovementInput().x);
 
         player.CheckFlip();
     }

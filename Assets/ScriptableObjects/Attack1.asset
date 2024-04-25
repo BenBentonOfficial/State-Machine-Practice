@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee70f6414ba01a34c9dc148505cc1ddc, type: 3}
   m_Name: Attack1
   m_EditorClassIdentifier: 
-  AttackMoveDirection: {x: 3, y: 1}
+  AttackMoveDirection: {x: 7, y: 1}

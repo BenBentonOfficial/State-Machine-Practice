@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerAnimationTriggers : MonoBehaviour
@@ -10,8 +9,13 @@ public class PlayerAnimationTriggers : MonoBehaviour
         Master = GetComponentInParent<Player>();
     }
 
-    private void AnimationTrigger()
+    private void AnimationEndTrigger()
     {
         Master.StateManager.GetCurrentState().AnimationFinishTrigger();
+    }
+
+    private void AttackTrigger()
+    {
+        
     }
 }

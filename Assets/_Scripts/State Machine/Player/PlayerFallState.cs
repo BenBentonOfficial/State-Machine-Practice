@@ -11,25 +11,30 @@ public class PlayerFallState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
+        stateTimer = 0.5f;
         if (player.StateManager.GetLastState().StateKey == PlayerStateMachine.EPlayerState.Move)
         {
             Debug.Log("coyote time");
             coyoteTimer = 0.2f;
         }
-        player.SetGravity(1.5f);
+        player.SetGravity(player.Gravity / 2);
     }
 
     public override void ExitState()
     {
         base.ExitState();
-        player.SetGravity(4f);
+        player.SetGravity(player.Gravity);
     }
 
     public override void UpdateState()
     {
         if(!InputManager.MovementInput().x.Equals(0))
-            player.SetVelocityX(2f * InputManager.MovementInput().x);
-
+            player.SetVelocityX((player.MoveSpeed / 2) * InputManager.MovementInput().x);
+        stateTimer -= Time.deltaTime;
+        if (stateTimer <= 0)
+        {
+            player.SetGravity(player.Gravity);
+        }
         
         if (coyoteTimer > 0)
         {

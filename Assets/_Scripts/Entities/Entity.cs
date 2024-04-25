@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
@@ -11,6 +10,8 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float jumpForce;
     [SerializeField] protected float groundCheckDistance;
     [SerializeField] protected LayerMask groundLayer;
+
+    [SerializeField] protected Transform attackTransform;
 
     public bool touchingGround =>
         Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundLayer);
