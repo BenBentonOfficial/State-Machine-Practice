@@ -11,7 +11,7 @@ public class PlayerFallState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
-        stateTimer = 0.5f;
+        stateTimer = 1;
         if (player.StateManager.GetLastState().StateKey == PlayerStateMachine.EPlayerState.Move)
         {
             Debug.Log("coyote time");

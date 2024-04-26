@@ -12,7 +12,7 @@ public class PlayerDoubleJumpState : PlayerState
         base.EnterState();
         player.ConsumeJumpInput();
         player.ConsumeDoubleJump();
-        player.SetVelocityY(player.JumpForce); // add doubleJump to animator
+        player.SetVelocityY(player.JumpForce * 0.85f); // add doubleJump to animator
     }
 
     public override void ExitState()

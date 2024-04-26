@@ -17,6 +17,7 @@ public class InputManager : MonoBehaviour
     
     public Action attackAction;
     public Action jumpAction;
+    public Action jumpActionEnd;
     public Action dashAction;
     
     private void Awake()
@@ -31,6 +32,7 @@ public class InputManager : MonoBehaviour
         attack.action.performed += Attack;
         jump.action.performed += Jump;
         dash.action.performed += Dash;
+        jump.action.canceled += JumpEnd;
     }
 
     public static Vector2 MovementInput()
@@ -46,6 +48,11 @@ public class InputManager : MonoBehaviour
     private void Jump(InputAction.CallbackContext context)
     {
         jumpAction?.Invoke();
+    }
+
+    private void JumpEnd(InputAction.CallbackContext context)
+    {
+        jumpActionEnd?.Invoke();
     }
 
     private void Dash(InputAction.CallbackContext context)

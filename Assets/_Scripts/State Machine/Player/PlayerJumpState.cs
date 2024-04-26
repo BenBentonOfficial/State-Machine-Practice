@@ -7,9 +7,19 @@ public class PlayerJumpState : PlayerState
     {
     }
 
+    private bool jumpInputEnded = false;
+
+    private void EndJump()
+    {
+        jumpInputEnded = true;
+        Debug.Log("Ending jump");
+    }
+
     public override void EnterState()
     {
         base.EnterState();
+        jumpInputEnded = false;
+        InputManager.instance.jumpActionEnd += EndJump;
         player.ConsumeJumpInput();
 
         if (player.StateManager.GetLastState().StateKey == PlayerStateMachine.EPlayerState.Dash)
@@ -30,6 +40,8 @@ public class PlayerJumpState : PlayerState
     public override void ExitState()
     {
         base.ExitState();
+        player.SetVelocityY(0);
+        InputManager.instance.jumpActionEnd -= EndJump;
     }
 
     public override void UpdateState()
@@ -42,7 +54,7 @@ public class PlayerJumpState : PlayerState
 
     public override PlayerStateMachine.EPlayerState GetNextState()
     {
-        if (player.Velocity().y <= 0)
+        if (player.Velocity().y <= 0 || jumpInputEnded)
         {
             return PlayerStateMachine.EPlayerState.Fall;
         }
