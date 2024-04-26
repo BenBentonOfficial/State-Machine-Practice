@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : Entity
@@ -36,9 +35,12 @@ public class Player : Entity
     [SerializeField] private List<PlayerAttackSO> playerAttacks;
     [SerializeField] private float gravity;
     public List<PlayerAttackSO> PlayerAttacks => playerAttacks;
+    public Transform AttackTransform => attackTransform;
     public Vector2 DashVelocity => dashVelocity;
     public float Gravity => gravity;
     public float MoveSpeed => moveSpeed;
+
+    public Action attack;
     
     #endregion
 
@@ -124,10 +126,6 @@ public class Player : Entity
 
     #region Attacks
 
-    public void Attack()
-    {
-        var hits = Physics2D.CircleCastAll(attackTransform.position, 0.3f, Vector2.zero);
-    }
 
     #endregion
 
@@ -138,7 +136,7 @@ public class Player : Entity
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(attackTransform.position, 1f);
+        Gizmos.DrawWireSphere(attackTransform.position, 1);
     }
     
     

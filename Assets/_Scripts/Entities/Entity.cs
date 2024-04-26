@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+public class Entity : MonoBehaviour, IHealth
 {
     protected Rigidbody2D rb;
     protected Animator animator;
@@ -12,6 +12,9 @@ public class Entity : MonoBehaviour
     [SerializeField] protected LayerMask groundLayer;
 
     [SerializeField] protected Transform attackTransform;
+    private int maxHealth;
+    private bool invincible;
+
 
     public bool touchingGround =>
         Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundLayer);
@@ -59,4 +62,41 @@ public class Entity : MonoBehaviour
     public Animator Animator => animator;
     public float JumpForce => jumpForce;
     public int FacingDir => facingDirection;
+
+    public void Damage(int damage, float knockbackPwr)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void ToggleInvincible()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    #region Health
+
+    protected int _currentHealth;
+    protected int _maxHealth;
+
+    public int Current => _currentHealth;
+    public int Max => _maxHealth;
+    public void Set(int value)
+    {
+        _currentHealth = value;
+    }
+
+    public void Heal(int value)
+    {
+        _currentHealth += value;
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
+    }
+
+    public void Damage(int value)
+    {
+        _currentHealth -= value;
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
+        Debug.Log("Damaged");
+    }
+    
+    #endregion
 }

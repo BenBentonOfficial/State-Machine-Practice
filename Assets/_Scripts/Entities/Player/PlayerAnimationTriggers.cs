@@ -16,6 +16,6 @@ public class PlayerAnimationTriggers : MonoBehaviour
 
     private void AttackTrigger()
     {
-        
+        Master.attack?.Invoke();
     }
 }

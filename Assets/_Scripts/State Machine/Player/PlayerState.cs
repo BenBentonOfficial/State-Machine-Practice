@@ -28,7 +28,7 @@ public class PlayerState : BaseState<PlayerStateMachine.EPlayerState>
 
     public override void AnimationFinishTrigger()
     {
-        throw new System.NotImplementedException();
+        animEnded = true;
     }
 
     protected PlayerState(PlayerStateMachine.EPlayerState key, Player entity, Rigidbody2D rb, Animator anim) : base(key, rb, anim)
