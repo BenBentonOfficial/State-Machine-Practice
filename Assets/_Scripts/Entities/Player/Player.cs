@@ -17,6 +17,8 @@ public class Player : Entity
         InputManager.instance.attackAction += QueueAttackInput;
         InputManager.instance.jumpAction += QueueJumpInput;
         InputManager.instance.dashAction += QueueDashInput;
+
+        dashCooldown = new Timer();
     }
     #endregion
 
@@ -55,6 +57,12 @@ public class Player : Entity
     {
         doubleJumpConsumed = false;
     }
+
+    #endregion
+
+    #region Timers
+
+    public Timer dashCooldown;
 
     #endregion
 
@@ -122,6 +130,11 @@ public class Player : Entity
     }
 
     #endregion
+
+    public void StartDashCooldown()
+    {
+        StartCoroutine(dashCooldown.StartTimer());
+    }
 
     private void OnDrawGizmosSelected()
     {

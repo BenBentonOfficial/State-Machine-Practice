@@ -12,6 +12,9 @@ public class PlayerDashState : PlayerState
         player.CheckFlip();
         player.SetVelocity(player.DashVelocity);
         player.SetGravity(0f);
+        
+        player.dashCooldown.SetTime(3f);
+        
         //invincible
     }
 
@@ -19,6 +22,7 @@ public class PlayerDashState : PlayerState
     {
         base.ExitState();
         player.SetGravity(player.Gravity);
+        player.StartDashCooldown();
         // stop invincible
     }
 

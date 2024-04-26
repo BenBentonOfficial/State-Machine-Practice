@@ -41,7 +41,7 @@ public class PlayerMoveState : PlayerState
             return PlayerStateMachine.EPlayerState.Jump;
         }
 
-        if (player.DashQueued)
+        if (player.DashQueued && player.dashCooldown.TimerFinished)
         {
             return PlayerStateMachine.EPlayerState.Dash;
         }
