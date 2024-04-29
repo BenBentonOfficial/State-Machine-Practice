@@ -23,12 +23,7 @@ public class Timer
             yield return new WaitForEndOfFrame();
             _timer += Time.deltaTime;
             _timer = Mathf.Clamp(_timer, 0, _timerLength);
-            Debug.Log("Timer: " + _timer + "  ::  " + _timerLength);
-            
+            //Debug.Log("Timer: " + _timer + "  ::  " + _timerLength);
         }
     }
-    
-    
-
-
 }

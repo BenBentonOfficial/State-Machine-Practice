@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Entity : MonoBehaviour, IHealth
@@ -14,6 +15,8 @@ public class Entity : MonoBehaviour, IHealth
     [SerializeField] protected Transform attackTransform;
     private int maxHealth;
     private bool invincible;
+
+    public Action onDamage;
 
 
     public bool touchingGround =>
@@ -63,11 +66,6 @@ public class Entity : MonoBehaviour, IHealth
     public float JumpForce => jumpForce;
     public int FacingDir => facingDirection;
 
-    public void Damage(int damage, float knockbackPwr)
-    {
-        throw new System.NotImplementedException();
-    }
-
     public void ToggleInvincible()
     {
         throw new System.NotImplementedException();
@@ -91,10 +89,12 @@ public class Entity : MonoBehaviour, IHealth
         _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
     }
 
-    public void Damage(int value)
+    public void Damage(int value, float knockback)
     {
         _currentHealth -= value;
         _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
+        rb.AddForceX(knockback, ForceMode2D.Impulse);
+        onDamage?.Invoke();
         Debug.Log("Damaged");
     }
     

@@ -33,8 +33,10 @@ public class Player : Entity
     [SerializeField] private float moveSpeed;
     [SerializeField] private Vector2 dashVelocity;
     [SerializeField] private List<PlayerAttackSO> playerAttacks;
+    [SerializeField] private PlayerAttackSO dashAttack;
     [SerializeField] private float gravity;
     public List<PlayerAttackSO> PlayerAttacks => playerAttacks;
+    public PlayerAttackSO DashAttack => dashAttack;
     public Transform AttackTransform => attackTransform;
     public Vector2 DashVelocity => dashVelocity;
     public float Gravity => gravity;

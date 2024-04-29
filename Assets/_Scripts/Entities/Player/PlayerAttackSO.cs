@@ -4,5 +4,6 @@ using UnityEngine;
 public class PlayerAttackSO : ScriptableObject
 {
     public int Damage;
+    public float Knockback;
     public Vector2 AttackMoveDirection;
 }

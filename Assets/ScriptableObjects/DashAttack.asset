@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee70f6414ba01a34c9dc148505cc1ddc, type: 3}
-  m_Name: Attack1
+  m_Name: DashAttack
   m_EditorClassIdentifier: 
-  Damage: 3
-  Knockback: 5
-  AttackMoveDirection: {x: 5, y: 1}
+  Damage: 8
+  Knockback: 10
+  AttackMoveDirection: {x: 7, y: 0}

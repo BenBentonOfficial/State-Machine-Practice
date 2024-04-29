@@ -90,7 +90,7 @@ public class PlayerAttackState : PlayerState
 
             if (hit.transform.TryGetComponent<IHealth>(out IHealth health))
             {
-                health.Damage(attacks[comboCount].Damage);
+                health.Damage(attacks[comboCount].Damage, attacks[comboCount].Knockback * player.FacingDir);
             }
 
         }
