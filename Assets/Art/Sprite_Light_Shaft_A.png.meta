@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: dc68f838bc8c80f4dba26350a4d4bd5f
+guid: f8a456b0d9ffb4c2095dcd1d20cb141f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7869377325572474145
-    second: Youngin_AttackSlash1_0
+      213: 8360318975331508352
+    second: Sprite_Light_Shaft_A_0
   - first:
-      213: 3979657483927921274
-    second: Youngin_AttackSlash1_1
+      213: -1480972494262608736
+    second: Sprite_Light_Shaft_A_1
+  - first:
+      213: -2732238962147336992
+    second: Sprite_Light_Shaft_A_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -49,12 +52,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -78,7 +81,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -103,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Youngin_AttackSlash1_0
+      name: Sprite_Light_Shaft_A_0
       rect:
         serializedVersion: 2
-        x: 5
+        x: 0
         y: 1
-        width: 11
-        height: 14
+        width: 778
+        height: 1015
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,20 +120,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fda3db1240b5ac290800000000000000
-      internalID: -7869377325572474145
+      spriteID: 080a79d20d1d50470800000000000000
+      internalID: 8360318975331508352
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Youngin_AttackSlash1_1
+      name: Sprite_Light_Shaft_A_1
       rect:
         serializedVersion: 2
-        x: 21
+        x: 311
         y: 0
-        width: 27
-        height: 16
+        width: 857
+        height: 1017
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,8 +141,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a72af3185659a3730800000000000000
-      internalID: 3979657483927921274
+      spriteID: 0ac5a5dec57827be0800000000000000
+      internalID: -1480972494262608736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Light_Shaft_A_2
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 0
+        width: 1079
+        height: 1017
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ecd9b3d323251ad0800000000000000
+      internalID: -2732238962147336992
       vertices: []
       indices: 
       edges: []
@@ -147,7 +171,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -155,8 +179,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Youngin_AttackSlash1_0: -7869377325572474145
-      Youngin_AttackSlash1_1: 3979657483927921274
+      Sprite_Light_Shaft_A_0: 8360318975331508352
+      Sprite_Light_Shaft_A_1: -1480972494262608736
+      Sprite_Light_Shaft_A_2: -2732238962147336992
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
