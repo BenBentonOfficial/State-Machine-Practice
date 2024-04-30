@@ -138,6 +138,7 @@ public class Player : Entity
 
     private void OnDrawGizmosSelected()
     {
+        Gizmos.DrawLine(transform.position, transform.position - new Vector3(0, groundCheckDistance, 0));
         Gizmos.DrawWireSphere(attackTransform.position, 1);
     }
     

@@ -48,6 +48,8 @@ public class PlayerJumpState : PlayerState
     {
         if(!InputManager.MovementInput().x.Equals(0))
             player.SetVelocityX(player.MoveSpeed * InputManager.MovementInput().x);
+        
+        player.SetGravity(RB.gravityScale += Time.deltaTime * 5f);
 
         player.CheckFlip();
     }
