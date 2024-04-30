@@ -25,10 +25,12 @@ public class PlayerAttackState : PlayerState
         if (!player.touchingGround)
             animEnded = true;
 
-        if (comboCount > 2 || Time.time > lastTimeAttacked + comboWindow)
+        if (comboCount > 1 || Time.time > lastTimeAttacked + comboWindow)
         {
             comboCount = 0;
         }
+        
+        player.SetCurrentCombo(comboCount);
         
         player.Animator.SetInteger("Combo", comboCount);
         player.SetVelocity(player.PlayerAttacks[comboCount].AttackMoveDirection);
@@ -82,6 +84,7 @@ public class PlayerAttackState : PlayerState
 
     public void Attack()
     {
+        
         var hits = Physics2D.CircleCastAll(attackTransform.position, 1, Vector2.zero);
         Debug.Log("Attack");
         foreach (var hit in hits)

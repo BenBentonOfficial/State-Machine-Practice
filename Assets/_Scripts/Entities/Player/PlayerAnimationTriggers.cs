@@ -2,20 +2,22 @@ using UnityEngine;
 
 public class PlayerAnimationTriggers : MonoBehaviour
 {
-    private Player Master;
+    private Player player;
 
     private void Awake()
     {
-        Master = GetComponentInParent<Player>();
+        player = GetComponentInParent<Player>();
     }
 
     private void AnimationEndTrigger()
     {
-        Master.StateManager.GetCurrentState().AnimationFinishTrigger();
+        player.StateManager.GetCurrentState().AnimationFinishTrigger();
     }
 
     private void AttackTrigger()
     {
-        Master.attack?.Invoke();
+        player.attack?.Invoke();
+        Instantiate(player.PlayerAttacks[player.CurrentCombo()].slashAnim, player.AttackTransform.position, transform.rotation);
+
     }
 }

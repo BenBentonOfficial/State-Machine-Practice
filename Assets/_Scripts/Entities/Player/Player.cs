@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class Player : Entity
@@ -35,6 +36,10 @@ public class Player : Entity
     [SerializeField] private List<PlayerAttackSO> playerAttacks;
     [SerializeField] private PlayerAttackSO dashAttack;
     [SerializeField] private float gravity;
+
+    private int currentCombo = 0;
+    public void SetCurrentCombo(int value) => currentCombo = value;
+    public int CurrentCombo() => currentCombo;
     public List<PlayerAttackSO> PlayerAttacks => playerAttacks;
     public PlayerAttackSO DashAttack => dashAttack;
     public Transform AttackTransform => attackTransform;
