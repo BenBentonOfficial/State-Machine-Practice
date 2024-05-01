@@ -84,9 +84,8 @@ public class PlayerAttackState : PlayerState
 
     public void Attack()
     {
-        
-        var hits = Physics2D.CircleCastAll(attackTransform.position, 1, Vector2.zero);
-        Debug.Log("Attack");
+        var hits = Physics2D.CircleCastAll(attackTransform.position, 1, Vector2.zero, 0, layers);
+       
         foreach (var hit in hits)
         {
             Debug.Log(hit.transform.gameObject.name);

@@ -39,8 +39,7 @@ public class PlayerFallState : PlayerState
         {
            coyoteTimer -= Time.deltaTime;
         }
-        
-        
+
         player.CheckFlip();
     }
 
@@ -57,8 +56,12 @@ public class PlayerFallState : PlayerState
 
         if (!player.touchingGround && player.JumpQueued && player.CanDoubleJump())
             return PlayerStateMachine.EPlayerState.DoubleJump;
-        
-        
+
+        if (player.AttackQueued && player.airAttackCooldown.TimerFinished)
+        {
+            return PlayerStateMachine.EPlayerState.AirAttack;
+        }
+
         return StateKey;
     }
 

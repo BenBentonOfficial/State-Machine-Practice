@@ -68,7 +68,7 @@ public class Entity : MonoBehaviour, IHealth
 
     public void ToggleInvincible()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     #region Health

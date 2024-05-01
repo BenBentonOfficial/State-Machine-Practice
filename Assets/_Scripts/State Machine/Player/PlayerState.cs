@@ -4,6 +4,7 @@ public class PlayerState : BaseState<PlayerStateMachine.EPlayerState>
 {
 
     protected Player player;
+    protected LayerMask layers = LayerMask.GetMask("Enemy");
 
     public override void EnterState()
     {

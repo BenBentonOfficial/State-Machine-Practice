@@ -316,15 +316,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.00074294204
-    y: 0.002642008
-    width: 0.9985141
-    height: 0.99339503
+    x: 0.0021097045
+    y: 0
+    width: 0.9957806
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5.875
+  orthographic size: 6.25
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5886,7 +5886,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1043381643}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &886439689
+--- !u!43 &839762436
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11238,7 +11238,7 @@ MonoBehaviour:
     m_Bits: 0
   attackTransform: {fileID: 561367244}
   moveSpeed: 9
-  dashVelocity: {x: 20, y: 0}
+  dashVelocity: {x: 25, y: 0}
   playerAttacks:
   - {fileID: 11400000, guid: 7d64f9c14067c6c4694ed6238c00001a, type: 2}
   - {fileID: 11400000, guid: 9bed40382dcd37d41bbd0c52fb8f820f, type: 2}
@@ -11562,7 +11562,7 @@ MonoBehaviour:
     rid: -2
   m_ShadowCastingSource: 1
   m_ShadowMesh:
-    m_Mesh: {fileID: 886439689}
+    m_Mesh: {fileID: 839762436}
     m_LocalBounds:
       m_Center: {x: 0.0138754845, y: -0.17344382, z: 0}
       m_Extent: {x: 0.28492957, y: 0.32655618, z: 0}

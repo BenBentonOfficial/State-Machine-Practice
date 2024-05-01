@@ -70,6 +70,12 @@ public class PlayerJumpState : PlayerState
             return PlayerStateMachine.EPlayerState.DoubleJump;
         }
 
+        if (player.AttackQueued && player.airAttackCooldown.TimerFinished)
+        {
+            return PlayerStateMachine.EPlayerState.AirAttack;
+        }
+       
+
         return StateKey;
     }
 

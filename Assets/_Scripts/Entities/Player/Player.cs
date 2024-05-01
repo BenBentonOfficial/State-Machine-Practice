@@ -19,6 +19,7 @@ public class Player : Entity
         InputManager.instance.dashAction += QueueDashInput;
 
         dashCooldown = new Timer();
+        airAttackCooldown = new Timer();
     }
     #endregion
 
@@ -72,6 +73,7 @@ public class Player : Entity
     #region Timers
 
     public Timer dashCooldown;
+    public Timer airAttackCooldown;
 
     #endregion
 

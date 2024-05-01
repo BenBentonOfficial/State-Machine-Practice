@@ -11,7 +11,6 @@ public class PlayerAirAttackState : PlayerState
     private PlayerAttackSO attack;
     private Transform attackTransform;
 
-
     public override void EnterState()
     {
         base.EnterState();
@@ -20,17 +19,18 @@ public class PlayerAirAttackState : PlayerState
         player.ConsumeAttackInput();
         
         player.ZeroVelocity();
+        
+        player.airAttackCooldown.SetTime(0.2f);
 
     }
 
     public override void ExitState()
     {
         base.ExitState();
+        player.airAttackCooldown.StartTimer();
     }
-
     public override void UpdateState()
     {
-        base.UpdateState();
     }
 
     public override PlayerStateMachine.EPlayerState GetNextState()
@@ -48,8 +48,8 @@ public class PlayerAirAttackState : PlayerState
     
     public void Attack()
     {
-        var hits = Physics2D.CircleCastAll(attackTransform.position, 1, Vector2.zero);
-        Debug.Log("Attack");
+        var hits = Physics2D.CircleCastAll(attackTransform.position, 1, Vector2.zero, 0, layers);
+        
         foreach (var hit in hits)
         {
             Debug.Log(hit.transform.gameObject.name);
