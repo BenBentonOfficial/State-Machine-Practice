@@ -22,7 +22,7 @@ public class PlayerJumpState : PlayerState
         InputManager.instance.jumpActionEnd += EndJump;
         player.ConsumeJumpInput();
 
-        if (player.StateManager.GetLastState().StateKey == PlayerStateMachine.EPlayerState.Dash)
+        /*if (player.StateManager.GetLastState().StateKey == PlayerStateMachine.EPlayerState.Dash)
         {
             player.SetVelocityY(player.JumpForce * 1.5f);
             player.SetVelocityX(player.Velocity().x / 4);
@@ -30,7 +30,11 @@ public class PlayerJumpState : PlayerState
         else
         {
             player.SetVelocityY(player.JumpForce);
-        }
+        }*/
+        
+        player.SetVelocityY(player.JumpForce);
+        
+     
             
 
         Debug.Log(player.Velocity());

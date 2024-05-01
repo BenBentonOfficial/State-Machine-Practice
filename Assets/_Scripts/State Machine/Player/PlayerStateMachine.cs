@@ -11,7 +11,8 @@ public class PlayerStateMachine : StateManager<PlayerStateMachine.EPlayerState>
         Jump,
         DoubleJump,
         Dash,
-        DashAttack
+        DashAttack,
+        AirAttack
     }
     
     public void Initialize(Player entity, Rigidbody2D rb, Animator anim)
@@ -24,6 +25,7 @@ public class PlayerStateMachine : StateManager<PlayerStateMachine.EPlayerState>
         States.Add(EPlayerState.Fall, new PlayerFallState(EPlayerState.Fall, entity, rb, anim));
         States.Add(EPlayerState.Dash, new PlayerDashState(EPlayerState.Dash, entity, rb, anim));
         States.Add(EPlayerState.DashAttack, new PlayerDashAttackState(EPlayerState.DashAttack, entity, rb, anim));
+        States.Add(EPlayerState.AirAttack, new PlayerAirAttackState(EPlayerState.AirAttack, entity, rb, anim));
 
         CurrentState = States[EPlayerState.Idle];
     }
