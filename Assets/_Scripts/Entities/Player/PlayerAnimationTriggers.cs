@@ -17,7 +17,6 @@ public class PlayerAnimationTriggers : MonoBehaviour
     private void AttackTrigger()
     {
         player.attack?.Invoke();
-        Instantiate(player.PlayerAttacks[player.CurrentCombo()].slashAnim, player.AttackTransform.position, transform.rotation);
-
+        //Instantiate(player.PlayerAttacks[player.CurrentCombo()].slashAnim, player.AttackTransform.position, transform.rotation);
     }
 }

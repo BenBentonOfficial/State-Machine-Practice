@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5aaeaf8d98d19dd49a088d814bc688bd
+guid: ae6a32fcdec684968a457a68a0f9cff0
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -14,6 +14,9 @@ TextureImporter:
   - first:
       213: 1043269491060064861
     second: Youngin_Attack1_3
+  - first:
+      213: 8220921681246894010
+    second: Youngin_Attack1_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -114,10 +117,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
+        width: 25
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -133,12 +136,12 @@ TextureImporter:
       name: Youngin_Attack1_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 25
         y: 0
-        width: 16
+        width: 25
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -154,12 +157,12 @@ TextureImporter:
       name: Youngin_Attack1_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 50
         y: 0
-        width: 16
+        width: 25
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -175,12 +178,12 @@ TextureImporter:
       name: Youngin_Attack1_3
       rect:
         serializedVersion: 2
-        x: 48
+        x: 75
         y: 0
-        width: 16
+        width: 25
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -195,7 +198,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 87ad30629cbc084468491fc7789cabd6
+    spriteID: 2ebe4337de0fb40afb19fe762debed27
     internalID: 0
     vertices: []
     indices: 

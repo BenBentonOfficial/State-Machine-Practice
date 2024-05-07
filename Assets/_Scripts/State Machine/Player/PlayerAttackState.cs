@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -85,7 +86,7 @@ public class PlayerAttackState : PlayerState
     public void Attack()
     {
         var hits = Physics2D.CircleCastAll(attackTransform.position, 1, Vector2.zero, 0, layers);
-       
+        bool successfullHit = false;
         foreach (var hit in hits)
         {
             Debug.Log(hit.transform.gameObject.name);
@@ -93,9 +94,12 @@ public class PlayerAttackState : PlayerState
             if (hit.transform.TryGetComponent<IHealth>(out IHealth health))
             {
                 health.Damage(attacks[comboCount].Damage, attacks[comboCount].Knockback * player.FacingDir);
+                successfullHit = true;
             }
-
         }
+        
+        if(successfullHit) { player.StartHitStop();}
     }
+    
 
 }

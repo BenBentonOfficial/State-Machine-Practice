@@ -12,7 +12,7 @@ public class PlayerJumpState : PlayerState
     private void EndJump()
     {
         jumpInputEnded = true;
-        Debug.Log("Ending jump");
+        //Debug.Log("Ending jump");
     }
 
     public override void EnterState()
@@ -37,7 +37,7 @@ public class PlayerJumpState : PlayerState
      
             
 
-        Debug.Log(player.Velocity());
+        //Debug.Log(player.Velocity());
         stateTimer = 0.1f; // coyote time
     }
 

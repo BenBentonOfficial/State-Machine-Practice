@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5aaeaf8d98d19dd49a088d814bc688bd
+guid: 7f7de9480557f42d69bfa64c3383b8e2
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -14,6 +14,18 @@ TextureImporter:
   - first:
       213: 1043269491060064861
     second: Youngin_Attack1_3
+  - first:
+      213: 8220921681246894010
+    second: Youngin_Attack1_4
+  - first:
+      213: -5702984549476383858
+    second: Youngin_Attack1_5
+  - first:
+      213: 7434454159525796760
+    second: Youngin_Attack1_6
+  - first:
+      213: -6023974682509634365
+    second: Youngin_Attack1_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -114,10 +126,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 28
+        height: 23
+      alignment: 9
+      pivot: {x: 0.25, y: 0.47}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -133,12 +145,12 @@ TextureImporter:
       name: Youngin_Attack1_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 28
         y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 28
+        height: 23
+      alignment: 9
+      pivot: {x: 0.25, y: 0.47}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -154,12 +166,12 @@ TextureImporter:
       name: Youngin_Attack1_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 56
         y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 28
+        height: 23
+      alignment: 9
+      pivot: {x: 0.25, y: 0.47}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -175,12 +187,12 @@ TextureImporter:
       name: Youngin_Attack1_3
       rect:
         serializedVersion: 2
-        x: 48
+        x: 84
         y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 28
+        height: 23
+      alignment: 9
+      pivot: {x: 0.25, y: 0.47}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -192,10 +204,52 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Youngin_Attack1_4
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 28
+        height: 23
+      alignment: 9
+      pivot: {x: 0.25, y: 0.47}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab7370976b4961270800000000000000
+      internalID: 8220921681246894010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Youngin_Attack1_5
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 0
+        width: 28
+        height: 23
+      alignment: 9
+      pivot: {x: 0.25, y: 0.47}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e834be894cdead0b0800000000000000
+      internalID: -5702984549476383858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 87ad30629cbc084468491fc7789cabd6
+    spriteID: 463672a31655a44299d935235da2e3a5
     internalID: 0
     vertices: []
     indices: 
@@ -207,6 +261,8 @@ TextureImporter:
       Youngin_Attack1_1: -9056414598839890266
       Youngin_Attack1_2: 7114571500461853504
       Youngin_Attack1_3: 1043269491060064861
+      Youngin_Attack1_4: 8220921681246894010
+      Youngin_Attack1_5: -5702984549476383858
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

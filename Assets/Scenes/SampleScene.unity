@@ -513,7 +513,7 @@ GameObject:
   - component: {fileID: 561086200}
   - component: {fileID: 561086199}
   - component: {fileID: 561086204}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Punching Bag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5886,7 +5886,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1043381643}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &839762436
+--- !u!43 &774873695
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11562,7 +11562,7 @@ MonoBehaviour:
     rid: -2
   m_ShadowCastingSource: 1
   m_ShadowMesh:
-    m_Mesh: {fileID: 839762436}
+    m_Mesh: {fileID: 774873695}
     m_LocalBounds:
       m_Center: {x: 0.0138754845, y: -0.17344382, z: 0}
       m_Extent: {x: 0.28492957, y: 0.32655618, z: 0}

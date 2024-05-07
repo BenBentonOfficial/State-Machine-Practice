@@ -1,10 +1,15 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class Player : Entity
 {
+    
+    //bad spot for this
+    public Animator attackAnimator;
+    
     #region Setup
     
     public PlayerStateMachine StateManager { get; private set; }
@@ -141,6 +146,21 @@ public class Player : Entity
     public void StartDashCooldown()
     {
         StartCoroutine(dashCooldown.StartTimer());
+    }
+
+    public void StartHitStop()
+    {
+        StartCoroutine(HitStop());
+    }
+
+    public IEnumerator HitStop()
+    {
+        Debug.Log("paused");
+        Animator.speed = 0;
+        //attackAnimator.speed = 0;
+        yield return new WaitForSeconds(0.15f);
+        //attackAnimator.speed = 1;
+        Animator.speed = 1;
     }
 
     private void OnDrawGizmosSelected()
