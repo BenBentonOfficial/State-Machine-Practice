@@ -1,15 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class Player : Entity
 {
-    
-    //bad spot for this
-    public Animator attackAnimator;
-    
     #region Setup
     
     public PlayerStateMachine StateManager { get; private set; }
@@ -24,7 +19,6 @@ public class Player : Entity
         InputManager.instance.dashAction += QueueDashInput;
 
         dashCooldown = new Timer();
-        airAttackCooldown = new Timer();
     }
     #endregion
 
@@ -36,6 +30,7 @@ public class Player : Entity
     
     private float inputConsumeTimer;
     private bool doubleJumpConsumed = false;
+    private bool airAttackConsumed = false;
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private Vector2 dashVelocity;
@@ -75,10 +70,29 @@ public class Player : Entity
 
     #endregion
 
+    #region AirAttack
+
+    public bool CanAirAttack()
+    {
+        return !airAttackConsumed;
+    }
+
+    public void ConsumeAirAttack()
+    {
+        airAttackConsumed = true;
+    }
+
+    public void ResetAirAttack()
+    {
+        airAttackConsumed = false;
+    }
+    
+
+    #endregion
+
     #region Timers
 
     public Timer dashCooldown;
-    public Timer airAttackCooldown;
 
     #endregion
 

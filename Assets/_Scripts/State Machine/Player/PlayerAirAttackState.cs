@@ -14,27 +14,29 @@ public class PlayerAirAttackState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
-
         player.attack += Attack;
+        
         player.ConsumeAttackInput();
-        
+        player.ConsumeAirAttack();
         player.ZeroVelocity();
-        
-        player.airAttackCooldown.SetTime(0.2f);
 
     }
 
     public override void ExitState()
     {
         base.ExitState();
-        player.airAttackCooldown.StartTimer();
+        player.attack -= Attack;
     }
     public override void UpdateState()
     {
+        player.ZeroVelocity();
     }
 
     public override PlayerStateMachine.EPlayerState GetNextState()
     {
+        if (animEnded && !player.touchingGround)
+            return PlayerStateMachine.EPlayerState.Fall;
+
         if (animEnded)
             return PlayerStateMachine.EPlayerState.Idle;
 
@@ -49,7 +51,7 @@ public class PlayerAirAttackState : PlayerState
     public void Attack()
     {
         var hits = Physics2D.CircleCastAll(attackTransform.position, 1, Vector2.zero, 0, layers);
-        
+        bool successfulHit = false;
         foreach (var hit in hits)
         {
             Debug.Log(hit.transform.gameObject.name);
@@ -57,8 +59,14 @@ public class PlayerAirAttackState : PlayerState
             if (hit.transform.TryGetComponent<IHealth>(out IHealth health))
             {
                 health.Damage(attack.Damage, attack.Knockback * player.FacingDir);
+                successfulHit = true;
             }
-
         }
+
+        if (successfulHit)
+        {
+            player.StartHitStop();
+        }
+        
     }
 }

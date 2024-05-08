@@ -93,6 +93,7 @@ public class Entity : MonoBehaviour, IHealth
     {
         _currentHealth -= value;
         _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
+        Debug.Log(knockback);
         rb.AddForceX(knockback, ForceMode2D.Impulse);
         onDamage?.Invoke();
         Debug.Log("Damaged");

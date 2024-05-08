@@ -21,6 +21,7 @@ public class PlayerDashState : PlayerState
     public override void ExitState()
     {
         base.ExitState();
+        player.ZeroVelocity();
         player.SetGravity(player.Gravity);
         player.StartDashCooldown();
         // stop invincible

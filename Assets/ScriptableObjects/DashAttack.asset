@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: DashAttack
   m_EditorClassIdentifier: 
   Damage: 8
-  Knockback: 10
+  Knockback: 7
   AttackMoveDirection: {x: 7, y: 0}
+  slashAnim: {fileID: 0}

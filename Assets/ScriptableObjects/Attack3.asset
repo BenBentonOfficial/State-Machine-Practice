@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Attack3
   m_EditorClassIdentifier: 
   Damage: 5
-  Knockback: 10
+  Knockback: 5
   AttackMoveDirection: {x: 10, y: 2}
+  slashAnim: {fileID: 0}

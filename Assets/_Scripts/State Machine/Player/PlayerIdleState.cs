@@ -12,6 +12,7 @@ public class PlayerIdleState : PlayerState
         base.EnterState();
         player.ZeroVelocity();
         player.ResetDoubleJump();
+        player.ResetAirAttack();
     }
 
     public override void ExitState()

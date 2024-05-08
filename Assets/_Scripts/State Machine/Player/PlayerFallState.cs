@@ -19,7 +19,7 @@ public class PlayerFallState : PlayerState
             coyoteTimer = 0.2f;
         }
         
-        player.SetGravity(player.Gravity / 1.75f);
+        //player.SetGravity(player.Gravity / 1.75f);
     }
 
     public override void ExitState()
@@ -57,7 +57,7 @@ public class PlayerFallState : PlayerState
         if (!player.touchingGround && player.JumpQueued && player.CanDoubleJump())
             return PlayerStateMachine.EPlayerState.DoubleJump;
 
-        if (player.AttackQueued && player.airAttackCooldown.TimerFinished)
+        if (player.AttackQueued && player.CanAirAttack())
         {
             return PlayerStateMachine.EPlayerState.AirAttack;
         }
