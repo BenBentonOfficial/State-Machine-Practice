@@ -19,6 +19,7 @@ public class Player : Entity
         InputManager.instance.dashAction += QueueDashInput;
 
         dashCooldown = new Timer();
+        onDamage += StartHitStop;
     }
     #endregion
 
@@ -112,7 +113,6 @@ public class Player : Entity
 
     private void QueueDashInput()
     {
-        Debug.Log("Dash Queued");
         inputConsumeTimer = 0.1f;
         dashQueued = true;
     }
@@ -160,21 +160,6 @@ public class Player : Entity
     public void StartDashCooldown()
     {
         StartCoroutine(dashCooldown.StartTimer());
-    }
-
-    public void StartHitStop()
-    {
-        StartCoroutine(HitStop());
-    }
-
-    public IEnumerator HitStop()
-    {
-        Debug.Log("paused");
-        Animator.speed = 0;
-        //attackAnimator.speed = 0;
-        yield return new WaitForSeconds(0.15f);
-        //attackAnimator.speed = 1;
-        Animator.speed = 1;
     }
 
     private void OnDrawGizmosSelected()

@@ -54,8 +54,6 @@ public class PlayerAirAttackState : PlayerState
         bool successfulHit = false;
         foreach (var hit in hits)
         {
-            Debug.Log(hit.transform.gameObject.name);
-
             if (hit.transform.TryGetComponent<IHealth>(out IHealth health))
             {
                 health.Damage(attack.Damage, attack.Knockback * player.FacingDir);
@@ -63,10 +61,7 @@ public class PlayerAirAttackState : PlayerState
             }
         }
 
-        if (successfulHit)
-        {
-            player.StartHitStop();
-        }
+        
         
     }
 }

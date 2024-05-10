@@ -89,8 +89,6 @@ public class PlayerAttackState : PlayerState
         bool successfullHit = false;
         foreach (var hit in hits)
         {
-            Debug.Log(hit.transform.gameObject.name);
-
             if (hit.transform.TryGetComponent<IHealth>(out IHealth health))
             {
                 health.Damage(attacks[comboCount].Damage, 5 * player.FacingDir);
@@ -98,7 +96,7 @@ public class PlayerAttackState : PlayerState
             }
         }
         
-        if(successfullHit) { player.StartHitStop();}
+        //if(successfullHit) { player.StartHitStop();}
     }
     
 

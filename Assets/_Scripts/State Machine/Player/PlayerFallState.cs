@@ -15,8 +15,8 @@ public class PlayerFallState : PlayerState
         coyoteTimer = 0;
         if (player.StateManager.GetLastState().StateKey == PlayerStateMachine.EPlayerState.Move)
         {
-            Debug.Log("coyote time");
-            coyoteTimer = 0.2f;
+            //Debug.Log("coyote time");
+            coyoteTimer = 0.1f;
         }
         
         //player.SetGravity(player.Gravity / 1.75f);
@@ -50,7 +50,6 @@ public class PlayerFallState : PlayerState
 
         if (!player.touchingGround && coyoteTimer > 0 && player.JumpQueued)
         {
-            player.ConsumeDoubleJump();
             return PlayerStateMachine.EPlayerState.Jump;
         }
 

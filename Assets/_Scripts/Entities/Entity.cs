@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Entity : MonoBehaviour, IHealth
@@ -27,6 +28,7 @@ public class Entity : MonoBehaviour, IHealth
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         groundLayer = LayerMask.GetMask("Ground");
+        onDamage += StartHitStop;
     }
 
     public void ZeroVelocity() => rb.velocity = Vector2.zero;
@@ -93,11 +95,22 @@ public class Entity : MonoBehaviour, IHealth
     {
         _currentHealth -= value;
         _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
-        Debug.Log(knockback);
         rb.AddForceX(knockback, ForceMode2D.Impulse);
         onDamage?.Invoke();
-        Debug.Log("Damaged");
     }
     
     #endregion
+    
+    public void StartHitStop()
+    {
+        StartCoroutine(HitStop());
+    }
+
+    public IEnumerator HitStop()
+    {
+        // probably make this an interface? or an event that things will subscribe to
+        Animator.speed = 0;
+        yield return new WaitForSeconds(0.15f);
+        Animator.speed = 1;
+    }
 }
