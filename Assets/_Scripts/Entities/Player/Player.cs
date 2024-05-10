@@ -165,7 +165,13 @@ public class Player : Entity
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawLine(transform.position, transform.position - new Vector3(0, groundCheckDistance, 0));
-        Gizmos.DrawWireSphere(attackTransform.position, 1);
+        Gizmos.DrawWireSphere(attackTransform.position, 0.7f);
+        Gizmos.DrawWireSphere(attackTransform.position + attackTransform.right * 1f, 0.7f);
+    }
+
+    public void Attack()
+    {
+         Instantiate(playerAttacks[currentCombo].slashAnim,attackTransform, worldPositionStays:false);
     }
     
     

@@ -1,31 +1,22 @@
 fileFormatVersion: 2
-guid: 7f7de9480557f42d69bfa64c3383b8e2
+guid: 803c3557a0f7347ad9a7941995922caf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6766857326062816900
-    second: Youngin_Attack1_0
+      213: -2877796731760770125
+    second: Main Slash_0
   - first:
-      213: -9056414598839890266
-    second: Youngin_Attack1_1
+      213: 4466931705553546113
+    second: Main Slash_1
   - first:
-      213: 7114571500461853504
-    second: Youngin_Attack1_2
+      213: -6703901972174619079
+    second: Main Slash_2
   - first:
-      213: 1043269491060064861
-    second: Youngin_Attack1_3
+      213: -2296000888492035217
+    second: Main Slash_3
   - first:
-      213: 8220921681246894010
-    second: Youngin_Attack1_4
-  - first:
-      213: -5702984549476383858
-    second: Youngin_Attack1_5
-  - first:
-      213: 7434454159525796760
-    second: Youngin_Attack1_6
-  - first:
-      213: -6023974682509634365
-    second: Youngin_Attack1_7
+      213: 3216122407119057253
+    second: Main Slash_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 12
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -93,7 +84,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -121,127 +112,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Youngin_Attack1_0
+      name: Main Slash_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 38
-        height: 23
+        width: 28
+        height: 16
       alignment: 9
-      pivot: {x: 0.35, y: 0.48}
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c71b6424d1b4712a0800000000000000
-      internalID: -6766857326062816900
+      spriteID: 3b38e93ae130018d0800000000000000
+      internalID: -2877796731760770125
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Youngin_Attack1_1
+      name: Main Slash_1
       rect:
         serializedVersion: 2
-        x: 38
+        x: 28
         y: 0
-        width: 38
-        height: 23
+        width: 28
+        height: 16
       alignment: 9
-      pivot: {x: 0.35, y: 0.48}
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6ae8c71c7e6215280800000000000000
-      internalID: -9056414598839890266
+      spriteID: 18be27928babdfd30800000000000000
+      internalID: 4466931705553546113
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Youngin_Attack1_2
+      name: Main Slash_2
       rect:
         serializedVersion: 2
-        x: 76
+        x: 56
         y: 0
-        width: 38
-        height: 23
+        width: 28
+        height: 16
       alignment: 9
-      pivot: {x: 0.35, y: 0.48}
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 04b8526c5190cb260800000000000000
-      internalID: 7114571500461853504
+      spriteID: 93ebd73dca4f6f2a0800000000000000
+      internalID: -6703901972174619079
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Youngin_Attack1_3
+      name: Main Slash_3
       rect:
         serializedVersion: 2
-        x: 114
+        x: 84
         y: 0
-        width: 38
-        height: 23
+        width: 28
+        height: 16
       alignment: 9
-      pivot: {x: 0.35, y: 0.48}
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d5243ab13107a7e00800000000000000
-      internalID: 1043269491060064861
+      spriteID: f63737d4b57f220e0800000000000000
+      internalID: -2296000888492035217
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Youngin_Attack1_4
+      name: Main Slash_4
       rect:
         serializedVersion: 2
-        x: 152
+        x: 112
         y: 0
-        width: 38
-        height: 23
+        width: 28
+        height: 16
       alignment: 9
-      pivot: {x: 0.35, y: 0.48}
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ab7370976b4961270800000000000000
-      internalID: 8220921681246894010
+      spriteID: 561718e1a46f1ac20800000000000000
+      internalID: 3216122407119057253
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Youngin_Attack1_5
+      name: Main Slash_5
       rect:
         serializedVersion: 2
-        x: 190
+        x: 140
         y: 0
-        width: 38
-        height: 23
+        width: 28
+        height: 16
       alignment: 9
-      pivot: {x: 0.35, y: 0.48}
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e834be894cdead0b0800000000000000
-      internalID: -5702984549476383858
+      spriteID: aa8d268ec801749349da8e9ef4e7bb90
+      internalID: 1368668565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Slash_6
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 0
+        width: 28
+        height: 16
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbeb1033978e845a2b5b48cf93bffad7
+      internalID: 316540297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Slash_7
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 0
+        width: 28
+        height: 16
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2817852e8ca6482398751a490fd8dac
+      internalID: -1193821989
       vertices: []
       indices: 
       edges: []
@@ -249,7 +282,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 463672a31655a44299d935235da2e3a5
+    spriteID: f7f17e0137b1f43dfbfe75ab461c1a2f
     internalID: 0
     vertices: []
     indices: 
@@ -257,12 +290,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Youngin_Attack1_0: -6766857326062816900
-      Youngin_Attack1_1: -9056414598839890266
-      Youngin_Attack1_2: 7114571500461853504
-      Youngin_Attack1_3: 1043269491060064861
-      Youngin_Attack1_4: 8220921681246894010
-      Youngin_Attack1_5: -5702984549476383858
+      Main Slash_0: -2877796731760770125
+      Main Slash_1: 4466931705553546113
+      Main Slash_2: -6703901972174619079
+      Main Slash_3: -2296000888492035217
+      Main Slash_4: 3216122407119057253
+      Main Slash_5: 1368668565
+      Main Slash_6: 316540297
+      Main Slash_7: -1193821989
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

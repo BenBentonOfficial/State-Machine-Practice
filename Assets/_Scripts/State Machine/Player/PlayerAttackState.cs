@@ -85,7 +85,8 @@ public class PlayerAttackState : PlayerState
 
     public void Attack()
     {
-        var hits = Physics2D.CircleCastAll(attackTransform.position, 1, Vector2.zero, 0, layers);
+        player.Attack();
+        var hits = Physics2D.CircleCastAll(attackTransform.position, 0.7f, attackTransform.right, 1f, layers);
         bool successfullHit = false;
         foreach (var hit in hits)
         {
