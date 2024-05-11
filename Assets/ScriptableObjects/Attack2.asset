@@ -15,4 +15,4 @@ MonoBehaviour:
   Damage: 1
   Knockback: 3
   AttackMoveDirection: {x: 3, y: 1}
-  slashAnim: {fileID: 3741988782580483850, guid: acdd561978082464ea55122c77495e34, type: 3}
+  slashAnim: {fileID: 7598387961851780196, guid: 80ab8b7c92432e744af80abe62fca158, type: 3}
