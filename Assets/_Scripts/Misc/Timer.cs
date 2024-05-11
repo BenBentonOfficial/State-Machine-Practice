@@ -4,14 +4,20 @@ using UnityEngine;
 public class Timer
 {
 
-    public float _timer { get; private set; } = 1f;
-    public float _timerLength { get; private set; } = 1f;
+    public float _timer { get; private set; } = 0;
+    public float _timerLength { get; private set; } = 0;
 
     public bool TimerFinished => _timer.Equals(_timerLength);
 
     public void SetTime(float timerLength)
     {
         _timerLength = timerLength;
+    }
+
+    public void Reset()
+    {
+        _timer = 0;
+        _timerLength = 0;
     }
 
     public IEnumerator StartTimer()

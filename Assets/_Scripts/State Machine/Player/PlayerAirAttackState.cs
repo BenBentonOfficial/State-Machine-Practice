@@ -11,21 +11,28 @@ public class PlayerAirAttackState : PlayerState
     private PlayerAttackSO attack;
     private Transform attackTransform;
 
+    private float cooldownTime;
+
     public override void EnterState()
     {
         base.EnterState();
+        cooldownTime = 3f;
         player.attack += Attack;
         
         player.ConsumeAttackInput();
         player.ConsumeAirAttack();
         player.ZeroVelocity();
+        player.SetGravity(player.Gravity * 0.3f);
 
     }
 
     public override void ExitState()
     {
         base.ExitState();
+        player.airAttackCooldown.SetTime(cooldownTime);
+        player.StartAirAttackCooldown();
         player.attack -= Attack;
+        player.SetGravity(player.Gravity);
     }
     public override void UpdateState()
     {
@@ -39,7 +46,7 @@ public class PlayerAirAttackState : PlayerState
 
         if (animEnded)
             return PlayerStateMachine.EPlayerState.Idle;
-
+        
         return StateKey;
     }
 
@@ -60,6 +67,14 @@ public class PlayerAirAttackState : PlayerState
                 successfulHit = true;
             }
         }
+
+        if (successfulHit)
+        {
+            player.ResetAirAttack();
+            // MOVE TO BETTER PLACE
+            cooldownTime = 0.2f;
+        }
+            
 
         
         

@@ -19,6 +19,7 @@ public class Player : Entity
         InputManager.instance.dashAction += QueueDashInput;
 
         dashCooldown = new Timer();
+        airAttackCooldown = new Timer();
         onDamage += StartHitStop;
     }
     #endregion
@@ -75,7 +76,7 @@ public class Player : Entity
 
     public bool CanAirAttack()
     {
-        return !airAttackConsumed;
+        return !airAttackConsumed && airAttackCooldown.TimerFinished;
     }
 
     public void ConsumeAirAttack()
@@ -94,6 +95,7 @@ public class Player : Entity
     #region Timers
 
     public Timer dashCooldown;
+    public Timer airAttackCooldown;
 
     #endregion
 
@@ -162,16 +164,21 @@ public class Player : Entity
         StartCoroutine(dashCooldown.StartTimer());
     }
 
+    public void StartAirAttackCooldown()
+    {
+        StartCoroutine(airAttackCooldown.StartTimer());
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawLine(transform.position, transform.position - new Vector3(0, groundCheckDistance, 0));
         Gizmos.DrawWireSphere(attackTransform.position, 0.7f);
-        Gizmos.DrawWireSphere(attackTransform.position + attackTransform.right * 1f, 0.7f);
+        //Gizmos.DrawWireSphere(attackTransform.position + attackTransform.right * 1f, 0.7f);
     }
 
     public void Attack()
     {
-         Instantiate(playerAttacks[currentCombo].slashAnim,attackTransform, worldPositionStays:false);
+         //Instantiate(playerAttacks[currentCombo].slashAnim,attackTransform, worldPositionStays:false);
     }
     
     

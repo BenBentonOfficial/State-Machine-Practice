@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Youngin_Attack2_Frame_0
     originalName: 
-    pivot: {x: 1, y: -0.27272725}
+    pivot: {x: 1.3571428, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 113
-      width: 10
-      height: 11
+      x: 31
+      y: 71
+      width: 14
+      height: 13
     spriteID: 831b0b5cf33024fc784b808638a44c1d
     spriteBone: []
     spriteOutline: []
@@ -140,18 +140,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 113}
+    uvTransform: {x: 31, y: 71}
   - name: Youngin_Attack2_Frame_1
     originalName: 
-    pivot: {x: 0.9, y: -0.27272725}
+    pivot: {x: 1, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 35
-      y: 4
-      width: 10
-      height: 11
+      x: 4
+      y: 71
+      width: 19
+      height: 15
     spriteID: 1a9214401e7be4d498c4da4f7dd94bda
     spriteBone: []
     spriteOutline: []
@@ -160,18 +160,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 35, y: 4}
+    uvTransform: {x: 4, y: 71}
   - name: Youngin_Attack2_Frame_2
     originalName: 
-    pivot: {x: 0.3913043, y: -0.04761905}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 23
-      height: 21
+      width: 38
+      height: 15
     spriteID: 6045f8ab573d145bbb574602d8213c61
     spriteBone: []
     spriteOutline: []
@@ -183,15 +183,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Youngin_Attack2_Frame_3
     originalName: 
-    pivot: {x: 0.3913043, y: -0.15789475}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 33
-      width: 23
-      height: 19
+      y: 27
+      width: 38
+      height: 15
     spriteID: 2f221b7238d7441e7ab8b1fa25df064c
     spriteBone: []
     spriteOutline: []
@@ -200,18 +200,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 33}
+    uvTransform: {x: 4, y: 27}
   - name: Youngin_Attack2_Frame_4
     originalName: 
-    pivot: {x: 0.3913043, y: -0.15789475}
+    pivot: {x: 0.5277778, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 60
-      width: 23
-      height: 19
+      y: 50
+      width: 36
+      height: 13
     spriteID: 1831db3504f3243e3a336eaaf5e3436e
     spriteBone: []
     spriteOutline: []
@@ -220,18 +220,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 60}
+    uvTransform: {x: 4, y: 50}
   - name: Youngin_Attack2_Frame_5
     originalName: 
-    pivot: {x: 0.5555556, y: -0.16666667}
+    pivot: {x: 1.3571428, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 87
-      width: 18
-      height: 18
+      y: 94
+      width: 14
+      height: 11
     spriteID: 95fddf564d32846bbb2b1070c71b4a95
     spriteBone: []
     spriteOutline: []
@@ -240,7 +240,27 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 87}
+    uvTransform: {x: 4, y: 94}
+  - name: Youngin_Attack2_Frame_6
+    originalName: 
+    pivot: {x: 1.4999999, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 50
+      width: 10
+      height: 11
+    spriteID: a435f9c776cb93548a28c0a5f61e69cd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 48, y: 50}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -253,55 +273,63 @@ ScriptedImporter:
     - name: Youngin_Attack2_Frame_0
       frameIndex: 0
       cellRect:
-        x: 4
-        y: 3
-        width: 10
-        height: 11
+        x: 0
+        y: 0
+        width: 14
+        height: 13
       spriteId: 831b0b5cf33024fc784b808638a44c1d
     - name: Youngin_Attack2_Frame_1
       frameIndex: 1
       cellRect:
-        x: 5
-        y: 3
-        width: 10
-        height: 11
+        x: 0
+        y: 0
+        width: 19
+        height: 15
       spriteId: 1a9214401e7be4d498c4da4f7dd94bda
     - name: Youngin_Attack2_Frame_2
       frameIndex: 2
       cellRect:
-        x: 5
-        y: 1
-        width: 23
-        height: 21
+        x: 0
+        y: 0
+        width: 38
+        height: 15
       spriteId: 6045f8ab573d145bbb574602d8213c61
     - name: Youngin_Attack2_Frame_3
       frameIndex: 3
       cellRect:
-        x: 5
-        y: 3
-        width: 23
-        height: 19
+        x: 0
+        y: 0
+        width: 38
+        height: 15
       spriteId: 2f221b7238d7441e7ab8b1fa25df064c
     - name: Youngin_Attack2_Frame_4
       frameIndex: 4
       cellRect:
-        x: 5
-        y: 3
-        width: 23
-        height: 19
+        x: 0
+        y: 0
+        width: 36
+        height: 13
       spriteId: 1831db3504f3243e3a336eaaf5e3436e
     - name: Youngin_Attack2_Frame_5
       frameIndex: 5
       cellRect:
-        x: 4
-        y: 3
-        width: 18
-        height: 18
+        x: 0
+        y: 0
+        width: 14
+        height: 11
       spriteId: 95fddf564d32846bbb2b1070c71b4a95
+    - name: Youngin_Attack2_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 4
+        y: 0
+        width: 10
+        height: 11
+      spriteId: a435f9c776cb93548a28c0a5f61e69cd
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 28, y: 23}
+  canvasSize: {x: 38, y: 17}
