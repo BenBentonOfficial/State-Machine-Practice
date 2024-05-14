@@ -17,6 +17,11 @@ public class Entity : MonoBehaviour, IHealth
     private int maxHealth;
     private bool invincible;
 
+    public bool hitStopped()
+    {
+        return animator.speed.Equals(0);
+    }
+
     public Action onDamage;
 
 
@@ -110,7 +115,7 @@ public class Entity : MonoBehaviour, IHealth
     {
         // probably make this an interface? or an event that things will subscribe to
         Animator.speed = 0;
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.05f);
         Animator.speed = 1;
     }
 }

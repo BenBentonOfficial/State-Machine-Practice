@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerAirAttackState : PlayerState
 {
+    
     public PlayerAirAttackState(PlayerStateMachine.EPlayerState key, Player entity, Rigidbody2D rb, Animator anim) : base(key, entity, rb, anim)
     {
         attack = entity.DashAttack; // change to air later

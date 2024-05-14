@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,18 +22,27 @@ public class PlayerAttackState : PlayerState
         player.ConsumeAttackInput();
         
         player.CheckFlip();
-        if (!player.touchingGround)
-            animEnded = true;
+        player.NoFlip();
+        //if (!player.touchingGround)
+            //animEnded = true;
 
-        if (comboCount > 1 || Time.time > lastTimeAttacked + comboWindow)
-        {
-            comboCount = 0;
-        }
+        // if (comboCount > 1 || Time.time > lastTimeAttacked + comboWindow)
+        // {
+        //     comboCount = 0;
+        // }
+        //
+        // player.SetCurrentCombo(comboCount);
+        //
+        // if (InputManager.MovementInput().y > 0.4f)
+        // {
+        //     comboCount = 2;
+        // }
+
+        var direction = player.attackDirection();
+        Debug.Log(direction);
         
-        player.SetCurrentCombo(comboCount);
-        
-        player.Animator.SetInteger("Combo", comboCount);
-        player.SetVelocity(player.PlayerAttacks[comboCount].AttackMoveDirection);
+        player.Animator.SetInteger("Direction", (int)direction);
+         //player.SetVelocity(player.PlayerAttacks[0].AttackMoveDirection);
 
         stateTimer = 0.1f;
     }
@@ -44,8 +52,9 @@ public class PlayerAttackState : PlayerState
         player.attack -= Attack;
         comboCount++;
         lastTimeAttacked = Time.time;
-        player.SetGravity(player.Gravity);
-        player.ZeroVelocity();
+        //player.SetGravity(player.Gravity);
+        //player.ZeroVelocity();
+        player.ResetCanFlip();
         base.ExitState();
     }
 
@@ -56,9 +65,18 @@ public class PlayerAttackState : PlayerState
         {
             if (stateTimer <= 0)
             { 
-                player.ZeroVelocity();
+                player.ResetCanFlip();
             }
         }
+
+        if (player.hitStopped())
+        { 
+            player.ZeroVelocity();
+        }
+            
+        
+        else if(!InputManager.MovementInput().x.Equals(0))
+            player.SetVelocityX((player.MoveSpeed *0.8f) * InputManager.MovementInput().x);
         
         if(stateTimer < 0 && player.touchingGround)
             player.ZeroVelocity();
@@ -67,10 +85,13 @@ public class PlayerAttackState : PlayerState
 
     public override PlayerStateMachine.EPlayerState GetNextState()
     {
-        if (animEnded)
+        if (animEnded && !player.touchingGround)
         {
-            return PlayerStateMachine.EPlayerState.Idle;
+            return PlayerStateMachine.EPlayerState.Fall;
         }
+
+        if (animEnded)
+            return PlayerStateMachine.EPlayerState.Idle;
 
         //if (!player.touchingGround)
             //return PlayerStateMachine.EPlayerState.Fall;
@@ -85,19 +106,20 @@ public class PlayerAttackState : PlayerState
 
     public void Attack()
     {
+        var attackLocation = player.attackLocation();
         player.Attack();
-        var hits = Physics2D.CircleCastAll(attackTransform.position, 0.7f, attackTransform.right, 0f, layers);
+        var hits = Physics2D.CircleCastAll(player.attackLocation(), 0.7f, attackTransform.right, 0f, layers);
         bool successfullHit = false;
         foreach (var hit in hits)
         {
             if (hit.transform.TryGetComponent<IHealth>(out IHealth health))
             {
-                health.Damage(attacks[comboCount].Damage, 5 * player.FacingDir);
+                health.Damage(attacks[0].Damage, 5 * player.FacingDir);
                 successfullHit = true;
             }
         }
         
-        //if(successfullHit) { player.StartHitStop();}
+        if(successfullHit && !player.touchingGround) { player.StartHitStop();}
     }
     
 

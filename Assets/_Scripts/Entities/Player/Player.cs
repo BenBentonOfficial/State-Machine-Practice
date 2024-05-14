@@ -1,10 +1,65 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Entity
 {
+    public enum AttackDirection
+    {
+        left,
+        right,
+        up,
+        down
+    }
+
+    [SerializeField] private Transform[] attackTransforms;
+
+    public bool attackFlipDir = false;
+    private bool canFlip = true;
+
+    public void NoFlip() => canFlip = false;
+    public void ResetCanFlip() => canFlip = true;
+
+    public AttackDirection attackDirection()
+    {
+        var y = InputManager.MovementInput().y;
+        var x = InputManager.MovementInput().x;
+        if (y > 0.4f && Mathf.Abs(y) > Mathf.Abs(x))
+        {
+            return AttackDirection.up;
+        }
+        else if (y < -0.4f && Mathf.Abs(y) > Mathf.Abs(x))
+        {
+            return AttackDirection.down;
+        }
+
+        if (attackFlipDir)
+        {
+            attackFlipDir = !attackFlipDir;
+            return AttackDirection.left;
+        }
+
+        attackFlipDir = !attackFlipDir;
+        return AttackDirection.right;
+    }
+
+    public Vector2 attackLocation()
+    {
+        attackDirection(); // this is dumb figure this out better
+        switch (attackDirection())
+        { case AttackDirection.left:
+                return attackTransforms[0].position;
+            case AttackDirection.right:
+                return attackTransforms[0].position;
+            case AttackDirection.up:
+                return attackTransforms[1].position;
+            case AttackDirection.down:
+                return attackTransforms[2].position;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }      
+    
     #region Setup
     
     public PlayerStateMachine StateManager { get; private set; }
@@ -144,6 +199,8 @@ public class Player : Entity
 
     public override void CheckFlip()
     {
+        if (!canFlip)
+            return;
         if (InputManager.MovementInput().x < 0 && facingDirection == 1)
         {
             Flip(180f);

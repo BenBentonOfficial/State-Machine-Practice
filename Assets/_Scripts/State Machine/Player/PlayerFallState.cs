@@ -58,7 +58,7 @@ public class PlayerFallState : PlayerState
 
         if (player.AttackQueued && player.CanAirAttack())
         {
-            return PlayerStateMachine.EPlayerState.AirAttack;
+            return PlayerStateMachine.EPlayerState.Attack;
         }
 
         return StateKey;
