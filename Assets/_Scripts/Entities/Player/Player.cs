@@ -1,16 +1,16 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Player : Entity
-{
-    public enum AttackDirection
+public enum AttackDirection
     {
         left,
         right,
         up,
         down
     }
+public class Player : Entity
+{
+    
 
     [SerializeField] private Transform[] attackTransforms;
 
@@ -74,6 +74,7 @@ public class Player : Entity
         InputManager.instance.dashAction += QueueDashInput;
 
         dashCooldown = new Timer();
+        attackCooldown = new Timer();
         airAttackCooldown = new Timer();
         onDamage += StartHitStop;
     }
@@ -150,6 +151,7 @@ public class Player : Entity
     #region Timers
 
     public Timer dashCooldown;
+    public Timer attackCooldown;
     public Timer airAttackCooldown;
 
     #endregion

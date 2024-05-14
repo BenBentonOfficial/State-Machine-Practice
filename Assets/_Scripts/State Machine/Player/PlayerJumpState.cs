@@ -32,7 +32,8 @@ public class PlayerJumpState : PlayerState
             player.SetVelocityY(player.JumpForce);
         }*/
         
-        player.SetVelocityY(player.JumpForce);
+        if(player.StateManager.GetLastState().StateKey != PlayerStateMachine.EPlayerState.Attack)
+            player.SetVelocityY(player.JumpForce);
         
      
             

@@ -14,10 +14,13 @@ public class PlayerAttackState : PlayerState
     private float comboWindow = 0.2f;
     private List<PlayerAttackSO> attacks;
     private Transform attackTransform;
+    private AttackDirection savedDirection;
+    private bool bounceHit = false;
 
     public override void EnterState()
     {
         base.EnterState();
+        bounceHit = false;
         player.attack += Attack;
         player.ConsumeAttackInput();
         
@@ -38,10 +41,17 @@ public class PlayerAttackState : PlayerState
         //     comboCount = 2;
         // }
 
-        var direction = player.attackDirection();
-        Debug.Log(direction);
+        savedDirection  = player.attackDirection();
+        player.SetVelocityX(0);
         
-        player.Animator.SetInteger("Direction", (int)direction);
+        if (savedDirection == AttackDirection.down)
+        {
+            Debug.Log(savedDirection);
+            player.SetVelocityY(2f);
+        }
+            
+        
+        player.Animator.SetInteger("Direction", (int)savedDirection);
          //player.SetVelocity(player.PlayerAttacks[0].AttackMoveDirection);
 
         stateTimer = 0.1f;
@@ -76,15 +86,18 @@ public class PlayerAttackState : PlayerState
             
         
         else if(!InputManager.MovementInput().x.Equals(0))
-            player.SetVelocityX((player.MoveSpeed *0.8f) * InputManager.MovementInput().x);
+            player.SetVelocityX((player.MoveSpeed *0.6f) * InputManager.MovementInput().x);
         
-        if(stateTimer < 0 && player.touchingGround)
-            player.ZeroVelocity();
+        //if(stateTimer < 0 && player.touchingGround)
+            //player.ZeroVelocity();
         
     }
 
     public override PlayerStateMachine.EPlayerState GetNextState()
     {
+        if (bounceHit && animEnded)
+            return PlayerStateMachine.EPlayerState.Jump;
+        
         if (animEnded && !player.touchingGround)
         {
             return PlayerStateMachine.EPlayerState.Fall;
@@ -119,7 +132,18 @@ public class PlayerAttackState : PlayerState
             }
         }
         
-        if(successfullHit && !player.touchingGround) { player.StartHitStop();}
+        if(successfullHit && !player.touchingGround) 
+        { 
+            if (savedDirection == AttackDirection.down)
+            {
+                bounceHit = true;
+                player.SetVelocityY(10f);
+            }
+            else
+            {
+                player.StartHitStop();
+            }
+        }
     }
     
 
