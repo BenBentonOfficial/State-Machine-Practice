@@ -21,7 +21,7 @@ public class PlayerAirAttackState : PlayerState
         player.attack += Attack;
         
         player.ConsumeAttackInput();
-        player.ConsumeAirAttack();
+        player.ConsumeAttack();
         player.ZeroVelocity();
         player.SetGravity(player.Gravity * 0.3f);
 
@@ -31,7 +31,7 @@ public class PlayerAirAttackState : PlayerState
     {
         base.ExitState();
         player.airAttackCooldown.SetTime(cooldownTime);
-        player.StartAirAttackCooldown();
+        player.StartAttackCooldown();
         player.attack -= Attack;
         player.SetGravity(player.Gravity);
     }
@@ -71,7 +71,7 @@ public class PlayerAirAttackState : PlayerState
 
         if (successfulHit)
         {
-            player.ResetAirAttack();
+            player.ResetAttack();
             // MOVE TO BETTER PLACE
             cooldownTime = 0.2f;
         }

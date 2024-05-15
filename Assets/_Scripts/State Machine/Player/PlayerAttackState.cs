@@ -44,16 +44,18 @@ public class PlayerAttackState : PlayerState
         savedDirection  = player.attackDirection();
         player.SetVelocityX(0);
         
+        player.attackCooldown.SetTime(0.05f);
         if (savedDirection == AttackDirection.down)
         {
             Debug.Log(savedDirection);
             player.SetVelocityY(2f);
+            player.attackCooldown.SetTime(0.12f);
         }
             
         
         player.Animator.SetInteger("Direction", (int)savedDirection);
          //player.SetVelocity(player.PlayerAttacks[0].AttackMoveDirection);
-
+        
         stateTimer = 0.1f;
     }
 
@@ -65,6 +67,7 @@ public class PlayerAttackState : PlayerState
         //player.SetGravity(player.Gravity);
         //player.ZeroVelocity();
         player.ResetCanFlip();
+        player.StartAttackCooldown();
         base.ExitState();
     }
 
@@ -137,7 +140,7 @@ public class PlayerAttackState : PlayerState
             if (savedDirection == AttackDirection.down)
             {
                 bounceHit = true;
-                player.SetVelocityY(10f);
+                player.SetVelocityY(15f);
             }
             else
             {

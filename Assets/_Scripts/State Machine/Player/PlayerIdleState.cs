@@ -12,7 +12,7 @@ public class PlayerIdleState : PlayerState
         base.EnterState();
         player.ZeroVelocity();
         player.ResetDoubleJump();
-        player.ResetAirAttack();
+        player.ResetAttack();
         player.airAttackCooldown.Reset();
     }
 

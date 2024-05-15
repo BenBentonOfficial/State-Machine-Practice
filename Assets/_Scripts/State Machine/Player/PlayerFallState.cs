@@ -56,7 +56,7 @@ public class PlayerFallState : PlayerState
         if (!player.touchingGround && player.JumpQueued && player.CanDoubleJump())
             return PlayerStateMachine.EPlayerState.DoubleJump;
 
-        if (player.AttackQueued && player.CanAirAttack())
+        if (player.AttackQueued && player.CanAttack())
         {
             return PlayerStateMachine.EPlayerState.Attack;
         }

@@ -10,8 +10,6 @@ public enum AttackDirection
     }
 public class Player : Entity
 {
-    
-
     [SerializeField] private Transform[] attackTransforms;
 
     public bool attackFlipDir = false;
@@ -88,7 +86,7 @@ public class Player : Entity
     
     private float inputConsumeTimer;
     private bool doubleJumpConsumed = false;
-    private bool airAttackConsumed = false;
+    private bool attackConsumed = false;
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private Vector2 dashVelocity;
@@ -128,25 +126,27 @@ public class Player : Entity
 
     #endregion
 
-    #region AirAttack
+    #region Attack
 
-    public bool CanAirAttack()
+    public bool CanAttack()
     {
-        return !airAttackConsumed && airAttackCooldown.TimerFinished;
+        return !attackConsumed && attackCooldown.TimerFinished;
     }
 
-    public void ConsumeAirAttack()
+    public void ConsumeAttack()
     {
-        airAttackConsumed = true;
+        attackConsumed = true;
     }
 
-    public void ResetAirAttack()
+    public void ResetAttack()
     {
-        airAttackConsumed = false;
+        attackConsumed = false;
     }
     
 
     #endregion
+
+
 
     #region Timers
 
@@ -223,9 +223,9 @@ public class Player : Entity
         StartCoroutine(dashCooldown.StartTimer());
     }
 
-    public void StartAirAttackCooldown()
+    public void StartAttackCooldown()
     {
-        StartCoroutine(airAttackCooldown.StartTimer());
+        StartCoroutine(attackCooldown.StartTimer());
     }
 
     private void OnDrawGizmosSelected()
