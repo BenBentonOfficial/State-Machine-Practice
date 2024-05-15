@@ -23,7 +23,8 @@ public class ChainLantern : MonoBehaviour
         var dumb = GetComponentsInChildren<HingeJoint2D>();
         foreach (var dummy in dumb)
         {
-            joints.Add(dummy);
+            if(dummy.name != "hellantern")
+                joints.Add(dummy);
         }
         
         if (joints.Count == ChainLength)
