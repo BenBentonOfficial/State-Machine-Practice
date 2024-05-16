@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 3942608991773298719}
   - component: {fileID: 204446818631931501}
   - component: {fileID: 8645143148875316705}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hellantern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
