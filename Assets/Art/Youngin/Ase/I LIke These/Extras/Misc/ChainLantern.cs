@@ -73,9 +73,18 @@ public class ChainLantern : MonoBehaviour
         DestroyImmediate(joints[index].gameObject);
         joints.Remove(joints[index]);
 
-        if (index - 1 < 0)
-            return;
-        Caboose.connectedBody = joints[index - 1].attachedRigidbody;
+        if (index > 0)
+        {
+            Caboose.connectedBody = joints[index - 1].attachedRigidbody;
+            
+        }
+        else
+        {
+            Caboose.connectedBody = transform.parent.GetComponent<Rigidbody2D>();
+        }
+        
         Caboose.transform.localPosition -= LinkDistance;
+            
+        
     }
 }
