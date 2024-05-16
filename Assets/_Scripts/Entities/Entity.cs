@@ -111,6 +111,11 @@ public class Entity : MonoBehaviour, IHealth
         StartCoroutine(HitStop());
     }
 
+    public void StopHitStop()
+    {
+        Animator.speed = 1;
+    }
+
     public IEnumerator HitStop()
     {
         // probably make this an interface? or an event that things will subscribe to

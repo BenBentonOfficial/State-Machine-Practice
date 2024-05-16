@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ public class PlayerAttackState : PlayerState
     private Transform attackTransform;
     private AttackDirection savedDirection;
     private bool bounceHit = false;
+
+    private Action HitSuccess;
 
     public override void EnterState()
     {
@@ -47,7 +50,6 @@ public class PlayerAttackState : PlayerState
         player.attackCooldown.SetTime(0.05f);
         if (savedDirection == AttackDirection.down)
         {
-            Debug.Log(savedDirection);
             player.SetVelocityY(2f);
             player.attackCooldown.SetTime(0.12f);
         }
@@ -134,17 +136,19 @@ public class PlayerAttackState : PlayerState
                 successfullHit = true;
             }
         }
+
+        if (!successfullHit)
+            return;
         
-        if(successfullHit && !player.touchingGround) 
+        player.onDamage?.Invoke();
+        
+        if(!player.touchingGround) 
         { 
             if (savedDirection == AttackDirection.down)
             {
                 bounceHit = true;
+                player.StopHitStop();
                 player.SetVelocityY(15f);
-            }
-            else
-            {
-                player.StartHitStop();
             }
         }
     }
