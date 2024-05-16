@@ -22,11 +22,11 @@ public class Player : Entity
     {
         var y = InputManager.MovementInput().y;
         var x = InputManager.MovementInput().x;
-        if (y > 0.4f && Mathf.Abs(y) > Mathf.Abs(x))
+        if (y > 0.4f && Mathf.Abs(y) >= Mathf.Abs(x))
         {
             return AttackDirection.up;
         }
-        else if (y < -0.4f && Mathf.Abs(y) > Mathf.Abs(x))
+        else if (y < -0.4f && Mathf.Abs(y) >= Mathf.Abs(x))
         {
             return AttackDirection.down;
         }
