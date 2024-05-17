@@ -26,9 +26,11 @@ public class Player : Entity
         {
             return AttackDirection.up;
         }
-        else if (y < -0.4f && Mathf.Abs(y) >= Mathf.Abs(x))
+        
+        if (y < -0.4f && Mathf.Abs(y) > Mathf.Abs(x))
         {
-            return AttackDirection.down;
+            if(!touchingGround)
+                return AttackDirection.down;
         }
 
         if (attackFlipDir)
