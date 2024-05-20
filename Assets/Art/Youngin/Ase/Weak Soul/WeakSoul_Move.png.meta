@@ -1,22 +1,19 @@
 fileFormatVersion: 2
-guid: e01cdf7c1201445e9b61d35d7abe7c63
+guid: cd25b3c92098d4aa4b60588a38778329
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5745814680272402775
-    second: BigSoul_AttackStart_0
+      213: 7299827838337366952
+    second: WeakSoul_Move_0
   - first:
-      213: -6820310464093640936
-    second: BigSoul_AttackStart_1
+      213: -8051136448777005536
+    second: WeakSoul_Move_1
   - first:
-      213: -133330292046741985
-    second: BigSoul_AttackStart_2
+      213: -806420516138442086
+    second: WeakSoul_Move_2
   - first:
-      213: 8212502065344982043
-    second: BigSoul_AttackStart_3
-  - first:
-      213: 3017161118042491547
-    second: BigSoul_AttackStart_4
+      213: 4414119801720859664
+    second: WeakSoul_Move_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -112,12 +109,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BigSoul_AttackStart_0
+      name: WeakSoul_Move_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 22
+        width: 16
         height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -126,19 +123,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7597cd2520c3dbf40800000000000000
-      internalID: 5745814680272402775
+      spriteID: 8ab3b992eb23e4560800000000000000
+      internalID: 7299827838337366952
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BigSoul_AttackStart_1
+      name: WeakSoul_Move_1
       rect:
         serializedVersion: 2
-        x: 22
+        x: 16
         y: 0
-        width: 22
+        width: 16
         height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -147,19 +144,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 817a1d9b4c36951a0800000000000000
-      internalID: -6820310464093640936
+      spriteID: 026527c7e0e944090800000000000000
+      internalID: -8051136448777005536
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BigSoul_AttackStart_2
+      name: WeakSoul_Move_2
       rect:
         serializedVersion: 2
-        x: 44
+        x: 32
         y: 0
-        width: 22
+        width: 16
         height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -168,19 +165,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f1e31c84ec0562ef0800000000000000
-      internalID: -133330292046741985
+      spriteID: a922bfb20d40fc4f0800000000000000
+      internalID: -806420516138442086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BigSoul_AttackStart_3
+      name: WeakSoul_Move_3
       rect:
         serializedVersion: 2
-        x: 66
+        x: 48
         y: 0
-        width: 22
+        width: 16
         height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -189,29 +186,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b1cac02ed1ba8f170800000000000000
-      internalID: 8212502065344982043
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BigSoul_AttackStart_4
-      rect:
-        serializedVersion: 2
-        x: 88
-        y: 0
-        width: 22
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b9a0b0f1d0c1fd920800000000000000
-      internalID: 3017161118042491547
+      spriteID: 01ce699929a124d30800000000000000
+      internalID: 4414119801720859664
       vertices: []
       indices: 
       edges: []
@@ -219,7 +195,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e6769af3613846da8e543b096760f2e
+    spriteID: 9635c483e495548e599a385aaf755155
     internalID: 0
     vertices: []
     indices: 
@@ -227,11 +203,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BigSoul_AttackStart_0: 5745814680272402775
-      BigSoul_AttackStart_1: -6820310464093640936
-      BigSoul_AttackStart_2: -133330292046741985
-      BigSoul_AttackStart_3: 8212502065344982043
-      BigSoul_AttackStart_4: 3017161118042491547
+      WeakSoul_Move_0: 7299827838337366952
+      WeakSoul_Move_1: -8051136448777005536
+      WeakSoul_Move_2: -806420516138442086
+      WeakSoul_Move_3: 4414119801720859664
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

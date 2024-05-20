@@ -52,7 +52,6 @@ public class DamageFlash : MonoBehaviour
     private void StartFlash()
     {
         StartCoroutine("Flash");
-        Debug.Log("Starting flash");
     }
 
     IEnumerator Flash()

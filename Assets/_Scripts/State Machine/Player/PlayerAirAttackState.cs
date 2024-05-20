@@ -24,7 +24,6 @@ public class PlayerAirAttackState : PlayerState
         player.ConsumeAttack();
         player.ZeroVelocity();
         player.SetGravity(player.Gravity * 0.3f);
-
     }
 
     public override void ExitState()

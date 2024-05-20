@@ -23,8 +23,7 @@ public class Entity : MonoBehaviour, IHealth
     }
 
     public Action onDamage;
-
-
+    
     public bool touchingGround =>
         Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundLayer);
 

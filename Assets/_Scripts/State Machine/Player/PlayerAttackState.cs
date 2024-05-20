@@ -47,11 +47,11 @@ public class PlayerAttackState : PlayerState
         savedDirection  = player.attackDirection();
         player.SetVelocityX(0);
         
-        player.attackCooldown.SetTime(0.05f);
+        player.attackCooldown.SetTime(0.08f);
         if (savedDirection == AttackDirection.down)
         {
             player.SetVelocityY(2f);
-            player.attackCooldown.SetTime(0.12f);
+            player.attackCooldown.SetTime(0.13f);
         }
             
         
@@ -69,6 +69,7 @@ public class PlayerAttackState : PlayerState
         //player.SetGravity(player.Gravity);
         //player.ZeroVelocity();
         player.ResetCanFlip();
+        player.CheckFlip();
         player.StartAttackCooldown();
         base.ExitState();
     }
@@ -76,7 +77,7 @@ public class PlayerAttackState : PlayerState
     public override void UpdateState()
     {
         stateTimer -= Time.deltaTime;
-        if (stateTimer > 0)
+        if (stateTimer >= 0)
         {
             if (stateTimer <= 0)
             { 
@@ -102,7 +103,7 @@ public class PlayerAttackState : PlayerState
     {
         if (bounceHit && animEnded)
             return PlayerStateMachine.EPlayerState.Jump;
-        
+
         if (animEnded && !player.touchingGround)
         {
             return PlayerStateMachine.EPlayerState.Fall;
