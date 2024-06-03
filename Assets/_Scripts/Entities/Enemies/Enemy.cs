@@ -12,6 +12,12 @@ public class Enemy : Entity
     }
 
     public RayCollisionCheck ledgeCheck;
-    
-    
+
+    //Move to SO
+    #region EnemyStats
+
+    public float moveSpeed;
+
+
+    #endregion
 }

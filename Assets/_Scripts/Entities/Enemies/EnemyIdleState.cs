@@ -11,6 +11,8 @@ public class EnemyIdleState : EnemyState
     {
         base.EnterState();
         enemy.ZeroVelocity();
+
+        stateTimer = 2f;
     }
 
     public override void ExitState()
@@ -20,7 +22,15 @@ public class EnemyIdleState : EnemyState
 
     public override void UpdateState()
     {
-        base.UpdateState();
+        stateTimer -= Time.deltaTime;
+
+        if (stateTimer >= 0)
+        {
+            if (stateTimer <= 0 )
+            {
+                
+            }
+        }
     }
 
     public override EnemyStateMachine.EEnemyState GetNextState()
